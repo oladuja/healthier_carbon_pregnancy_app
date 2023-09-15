@@ -57,6 +57,7 @@ class PeriodScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 45),
               ],
             ),
           ),
