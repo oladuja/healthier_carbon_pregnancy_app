@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/start/about_you_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 
 class DOBScreen extends StatefulWidget {
@@ -55,7 +56,7 @@ class _DOBScreenState extends State<DOBScreen> {
 
             AppButton(
               text: 'NEXT',
-              onTap: () {},
+              onTap: () => Navigator.of(context).pushNamed(AboutYouScreen.routeName),
             ),
             const Spacer(),
             Container(

@@ -17,7 +17,7 @@ class PeriodScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               children: [
-                const SizedBox(height: 25),
+                const SizedBox(height: 15),
                 GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
                   child: const Align(
@@ -31,18 +31,9 @@ class PeriodScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 45),
+                const SizedBox(height: 30),
                 const Text(
                   'Log the first day of your last \nperiod?',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  'August 2023',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 27,
@@ -55,11 +46,7 @@ class PeriodScreen extends StatelessWidget {
                     firstDate: DateTime(2023),
                     lastDate: DateTime(2024),
                     onDateChanged: (_) {}),
-                AppButton(
-                  text: "NEXT",
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(PeriodScreen.routeName),
-                ),
+                AppButton(text: "NEXT", onTap: () {},),
                 const Spacer(),
                 Container(
                   width: 150,
@@ -70,7 +57,6 @@ class PeriodScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 45),
               ],
             ),
           ),
