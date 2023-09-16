@@ -19,7 +19,9 @@ class ContinueScreen extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Colors.grey.withOpacity(0.3), BlendMode.color),
+                Colors.black.withOpacity(0.3),
+                BlendMode.darken,
+              ),
               image: const AssetImage('assets/images/bg3.jpg'),
             ),
           ),
