@@ -27,7 +27,7 @@ class AboutYouScreen extends StatelessWidget {
                     child: Text(
                       'Back',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -37,7 +37,7 @@ class AboutYouScreen extends StatelessWidget {
                 const Text(
                   'About You',
                   style: TextStyle(
-                    fontSize: 27,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -45,7 +45,7 @@ class AboutYouScreen extends StatelessWidget {
                 const Text(
                   'Tell us your weight and size',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -19,7 +19,7 @@ class ContinueScreen extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.3),
+                Colors.black.withOpacity(0.2),
                 BlendMode.darken,
               ),
               image: const AssetImage('assets/images/bg3.jpg'),
@@ -50,7 +50,7 @@ class ContinueScreen extends StatelessWidget {
               const Text(
                 'Nurse Guided Pregnancy \nand Postpartum Journey',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),

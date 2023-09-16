@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/start/loading_home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 
 class PeriodScreen extends StatelessWidget {
@@ -25,28 +26,35 @@ class PeriodScreen extends StatelessWidget {
                     child: Text(
                       'Back',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 50),
                 const Text(
                   'Log the first day of your last \nperiod?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 27,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 15),
                 CalendarDatePicker(
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2023),
-                    lastDate: DateTime(2024),
-                    onDateChanged: (_) {}),
-                AppButton(text: "NEXT", onTap: () {},),
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2023),
+                  lastDate: DateTime(2024),
+                  onDateChanged: (_) {},
+                ),
+                const SizedBox(height: 15),
+
+                AppButton(
+                  text: "NEXT",
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(LoadingHomeScreen.routeName),
+                ),
                 const Spacer(),
                 Container(
                   width: 150,
@@ -57,7 +65,7 @@ class PeriodScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 45),
+                // const SizedBox(height: 45),
               ],
             ),
           ),

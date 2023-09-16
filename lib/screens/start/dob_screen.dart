@@ -16,7 +16,7 @@ class _DOBScreenState extends State<DOBScreen> {
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
-    DateTime? _selectedDate;
+    DateTime? selectedDate;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -26,7 +26,7 @@ class _DOBScreenState extends State<DOBScreen> {
             const Text(
               'Select your date of birth',
               style: TextStyle(
-                fontSize: 27,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -41,9 +41,9 @@ class _DOBScreenState extends State<DOBScreen> {
               locale: DatePicker.localeFromString('en'),
               onChange: (DateTime newDate, _) {
                 setState(() {
-                  _selectedDate = newDate;
+                  selectedDate = newDate;
                 });
-                print(_selectedDate);
+                print(selectedDate);
               },
               pickerTheme: const DateTimePickerTheme(
                 backgroundColor: Colors.transparent,

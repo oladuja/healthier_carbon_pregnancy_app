@@ -19,10 +19,14 @@ class SignUpScreen extends StatelessWidget {
           child: Container(
             width: size.width,
             height: size.height,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/images/bg1.jpg'),
+                image: const AssetImage('assets/images/bg1.jpg'),
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.2),
+                  BlendMode.darken,
+                ),
               ),
             ),
             child: Padding(
@@ -35,25 +39,26 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       const Text(
                         'Sign Up',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 12),
                       ),
                       GestureDetector(
                         onTap: () => Navigator.of(context)
                             .popAndPushNamed(LoginScreen.routeName),
                         child: const Text(
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 12),
                           'Sign In',
                         ),
                       ),
                     ],
                   ),
+                  const SizedBox(height: 15),
                   const Align(
                     alignment: Alignment.center,
                     child: Text(
                       'Create Account',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 28,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -72,7 +77,7 @@ class SignUpScreen extends StatelessWidget {
                   const AppTextField(
                     type: TextInputType.name,
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 15),
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -83,11 +88,10 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5),
                   const AppTextField(
                     type: TextInputType.emailAddress,
                   ),
-                  const SizedBox(height: 35),
+                  const SizedBox(height: 15),
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(

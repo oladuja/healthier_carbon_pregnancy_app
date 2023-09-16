@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/start/forgot_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/signup_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
@@ -19,10 +20,14 @@ class LoginScreen extends StatelessWidget {
           child: Container(
             width: size.width,
             height: size.height,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/images/bg2.jpg'),
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.2),
+                  BlendMode.darken,
+                ),
+                image: const AssetImage('assets/images/bg2.jpg'),
               ),
             ),
             child: Padding(
@@ -38,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                         'Sign Up',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -49,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                       'Healthier Carbon',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 28,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -79,15 +84,19 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 45),
                   AppButton(
                     text: "SIGN IN",
-                    onTap: () => Navigator.of(context).popAndPushNamed(
-                        StageScreen.routeName),
+                    onTap: () => Navigator.of(context)
+                        .popAndPushNamed(StageScreen.routeName),
                   ),
                   const SizedBox(height: 15),
-                  const Text(
-                    'Forgot Password? Click HERE to recover',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(ForgotPasswordScreen.routeName),
+                    child: const Text(
+                      'Forgot Password? Click HERE to recover',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 15),

@@ -26,7 +26,7 @@ class HealthScreen extends StatelessWidget {
                     child: Text(
                       'Back',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -37,7 +37,7 @@ class HealthScreen extends StatelessWidget {
                   'Do you have any of these \nreproductive health \nconditions?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 27,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -46,7 +46,7 @@ class HealthScreen extends StatelessWidget {
                   'We’re asking because we can provide you with\ncontent about these conditions',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -61,11 +61,11 @@ class HealthScreen extends StatelessWidget {
                         Border.all(width: 1.0, color: const Color(0XFF666666)),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Text(
                       'Endometriosis',
                       style: TextStyle(
-                        fontSize: 27,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -82,11 +82,11 @@ class HealthScreen extends StatelessWidget {
                         Border.all(width: 1.0, color: const Color(0XFF666666)),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Text(
                       'I\'m not sure',
                       style: TextStyle(
-                        fontSize: 27,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -103,11 +103,11 @@ class HealthScreen extends StatelessWidget {
                         Border.all(width: 1.0, color: const Color(0XFF666666)),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Text(
                       'No, I dont',
                       style: TextStyle(
-                        fontSize: 27,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/about_you_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/dob_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/start/forgot_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/health_condition.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/start/loading_home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/login_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/period_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/signup_screen.dart';
@@ -23,6 +26,7 @@ class App extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (_) => const SplashScreen(),
+        HomeScreen.routeName: (_) => const HomeScreen(),
         ContinueScreen.routeName: (_) => const ContinueScreen(),
         StartScreen.routeName: (_) => const StartScreen(),
         LoginScreen.routeName: (_) => const LoginScreen(),
@@ -32,6 +36,8 @@ class App extends StatelessWidget {
         AboutYouScreen.routeName: (_) => const AboutYouScreen(),
         HealthScreen.routeName: (_) => const HealthScreen(),
         PeriodScreen.routeName: (_) => const PeriodScreen(),
+        ForgotPasswordScreen.routeName: (_) => const ForgotPasswordScreen(),
+        LoadingHomeScreen.routeName: (_) => const LoadingHomeScreen(),
       },
     );
   }

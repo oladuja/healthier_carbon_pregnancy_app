@@ -15,11 +15,11 @@ class StageScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
           children: [
-            const SizedBox(height: 75),
+            const SizedBox(height: 60),
             const Text(
               'What\'s your stage?',
               style: TextStyle(
-                fontSize: 27,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -39,7 +39,7 @@ class StageScreen extends StatelessWidget {
                   child: Text(
                     'Pregnant',
                     style: TextStyle(
-                      fontSize: 27,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -62,7 +62,7 @@ class StageScreen extends StatelessWidget {
                   child: Text(
                     'Postpartum',
                     style: TextStyle(
-                      fontSize: 27,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
