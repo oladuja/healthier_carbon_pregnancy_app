@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/notification_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/schedule_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = 'home-screen';
@@ -20,23 +23,31 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+                Row(
                   children: [
-                    CircleAvatar(
-                      radius: 18,
-                      backgroundImage: AssetImage('assets/images/dp.png'),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(ProfileScreen.routeName),
+                      child: const CircleAvatar(
+                        radius: 18,
+                        backgroundImage: AssetImage('assets/images/dp.png'),
+                      ),
                     ),
-                    Spacer(),
-                    Text(
+                    const Spacer(),
+                    const Text(
                       "Welcome Judith",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Spacer(),
-                    FaIcon(
-                      FontAwesomeIcons.bell,
-                      color: Color(0XFF666666),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(NotificationScreen.routeName),
+                      child: const FaIcon(
+                        FontAwesomeIcons.bell,
+                        color: Color(0XFF666666),
+                      ),
                     ),
                   ],
                 ),
@@ -152,9 +163,13 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 15),
                 Row(
                   children: [
-                    const Text(
-                      "Calendar",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const ScheduleScreen())),
+                      child: const Text(
+                        "Calendar",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const Spacer(),
                     Container(
@@ -400,7 +415,6 @@ class HomeScreen extends StatelessWidget {
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.user),
             label: "You",
-
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.video),

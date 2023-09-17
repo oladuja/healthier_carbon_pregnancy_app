@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/home_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/notification_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/about_you_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/dob_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/forgot_screen.dart';
@@ -38,6 +40,8 @@ class App extends StatelessWidget {
         PeriodScreen.routeName: (_) => const PeriodScreen(),
         ForgotPasswordScreen.routeName: (_) => const ForgotPasswordScreen(),
         LoadingHomeScreen.routeName: (_) => const LoadingHomeScreen(),
+        ProfileScreen.routeName: (_) => const ProfileScreen(),
+        NotificationScreen.routeName: (_) => const NotificationScreen(),
       },
     );
   }
