@@ -106,7 +106,7 @@ class SignUpScreen extends StatelessWidget {
                   const AppTextFieldPassword(),
                   const SizedBox(height: 45),
                   AppButton(
-                    text: "SIGN IN",
+                    text: "CONTINUE",
                     onTap: () => Navigator.of(context).popAndPushNamed(
                       StageScreen.routeName,
                     ),
