@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/models/about_user.dart';
+import 'package:provider/provider.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/start/dob_screen.dart';
 
 class StageScreen extends StatelessWidget {
@@ -25,7 +27,11 @@ class StageScreen extends StatelessWidget {
             ),
             const SizedBox(height: 100),
             GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed(DOBScreen.routeName),
+              onTap: () {
+                Provider.of<AboutUser>(context, listen: false)
+                    .selectUserCondition(UserCondition.pregnant);
+                Navigator.of(context).pushNamed(DOBScreen.routeName);
+              },
               child: Container(
                 height: 58,
                 width: size.width,
@@ -48,7 +54,11 @@ class StageScreen extends StatelessWidget {
             ),
             const SizedBox(height: 90),
             GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed(DOBScreen.routeName),
+              onTap: () {
+                Provider.of<AboutUser>(context, listen: false)
+                    .selectUserCondition(UserCondition.postpartum);
+                Navigator.of(context).pushNamed(DOBScreen.routeName);
+              },
               child: Container(
                 height: 58,
                 width: size.width,

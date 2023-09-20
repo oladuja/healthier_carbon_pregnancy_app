@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/notification_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/chat_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/post_item.dart';
 
@@ -84,11 +84,18 @@ class Community extends StatelessWidget {
                     color: const Color(0XFFE6E6E6),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Text(
-                    "Chat with nurse",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const ChatScreen(),
+                      ),
+                    ),
+                    child: const Text(
+                      "Chat with nurse",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -126,10 +133,15 @@ class Community extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15),
-            PostItem(size: size, image: "assets/images/feed.png",),
-            
+            PostItem(
+              size: size,
+              image: "assets/images/feed.png",
+            ),
             const SizedBox(height: 15),
-            PostItem(size: size, image: "assets/images/yoga.png",),
+            PostItem(
+              size: size,
+              image: "assets/images/yoga.png",
+            ),
           ],
         ),
       ),

@@ -4,7 +4,6 @@ import 'package:healthier_carbon_pregnancy_app/screens/home/exercise.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/nutrition.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_tab.dart';
-import 'package:healthier_carbon_pregnancy_app/widgets/video_widget.dart';
 
 class WellnessScreen extends StatefulWidget {
   const WellnessScreen({super.key});

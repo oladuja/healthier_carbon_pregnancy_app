@@ -5,8 +5,8 @@ import 'package:healthier_carbon_pregnancy_app/screens/home/notification_screen.
 import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/schedule_screen.dart';
 
-class YouScreen extends StatelessWidget {
-  const YouScreen({
+class PostpartumScreen extends StatelessWidget {
+  const PostpartumScreen({
     super.key,
     required this.size,
   });
@@ -61,8 +61,29 @@ class YouScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0XFFA6A6A6),
               ),
-              child: Column(
+              child: Row(
                 children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0XFFFEF5F3),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsetsDirectional.all(8),
+                    child: const Text(
+                      '28',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Text(
+                    'Weeks into \npostpartum',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Spacer(),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -103,70 +124,6 @@ class YouScreen extends StatelessWidget {
                               "5 ft 7\"",
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color(0XFFFEF5F3),
-                    ),
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Baby's Growth",
-                              style: TextStyle(fontSize: 10),
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 25,
-                                  height: 25,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/babylogo.png'),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                const Text(
-                                  "18 weeks",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 15),
-                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Estimated time of delivery in",
-                              style: TextStyle(fontSize: 10),
-                            ),
-                            const SizedBox(height: 7),
-                            Container(
-                              height: 25,
-                              child: const Text(
-                                "22 weeks",
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.bold),
-                              ),
                             ),
                           ],
                         ),

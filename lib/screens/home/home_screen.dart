@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/models/about_user.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/advice_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/check_in_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/community.dart';
+import 'package:healthier_carbon_pregnancy_app/screens/home/postpartum_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/wellness.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/you_screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home-screen';
@@ -30,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: PageView(
           controller: pageController,
           children: [
-            You_Screen(size: size),
+            (Provider.of<AboutUser>(context).userCondition ==
+                    UserCondition.pregnant)
+                ? YouScreen(size: size)
+                : PostpartumScreen(size: size),
             const CheckInScreen(),
             const AdviceScreen(),
             const WellnessScreen(),
