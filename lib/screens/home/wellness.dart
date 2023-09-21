@@ -21,57 +21,60 @@ class _WellnessScreenState extends State<WellnessScreen> {
 
     return SingleChildScrollView(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15),
         width: size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(ProfileScreen.routeName),
-                  child: const CircleAvatar(
-                    radius: 18,
-                    backgroundImage: AssetImage('assets/images/dp.png'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(ProfileScreen.routeName),
+                    child: const CircleAvatar(
+                      radius: 18,
+                      backgroundImage: AssetImage('assets/images/dp.png'),
+                    ),
                   ),
-                ),
-                // const Spacer(),
-                const SizedBox(width: 15),
-                Expanded(
-                  child: SizedBox(
-                    height: 38,
-                    child: TextField(
-                      keyboardType: TextInputType.text,
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        fillColor: const Color(0XFF808080).withOpacity(0.1),
-                        filled: true,
-                        hintText: 'Type keyword',
-                        hintStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                        enabled: true,
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                  // const Spacer(),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: SizedBox(
+                      height: 38,
+                      child: TextField(
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.black,
+                        decoration: InputDecoration(
+                          fillColor: const Color(0XFF808080).withOpacity(0.1),
+                          filled: true,
+                          hintText: 'Type keyword',
+                          hintStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
                           ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(14.0),
+                          enabled: true,
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(14.0),
+                            ),
                           ),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(14.0),
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(14.0),
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 15),
             Row(
@@ -101,37 +104,40 @@ class _WellnessScreenState extends State<WellnessScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            const Row(
-              children: [
-                Chip(
-                  label: Text(
-                    "Top Videos",
-                    style: TextStyle(fontSize: 12),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                children: [
+                  Chip(
+                    label: Text(
+                      "Top Videos",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    backgroundColor: Color(0XFFFEF5F3),
+                    side: BorderSide(color: Colors.black),
                   ),
-                  backgroundColor: Color(0XFFFEF5F3),
-                  side: BorderSide(color: Colors.black),
-                ),
-                SizedBox(width: 15),
-                Chip(
-                  label: Text(
-                    "New",
-                    style: TextStyle(fontSize: 12),
+                  SizedBox(width: 15),
+                  Chip(
+                    label: Text(
+                      "New",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    backgroundColor: Color(0XFFFEF5F3),
+                    side: BorderSide(color: Colors.black),
                   ),
-                  backgroundColor: Color(0XFFFEF5F3),
-                  side: BorderSide(color: Colors.black),
-                ),
-                SizedBox(width: 15),
-                Chip(
-                  label: Text(
-                    "Saved",
-                    style: TextStyle(fontSize: 12),
+                  SizedBox(width: 15),
+                  Chip(
+                    label: Text(
+                      "Saved",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    backgroundColor: Color(0XFFFEF5F3),
+                    side: BorderSide(color: Colors.black),
                   ),
-                  backgroundColor: Color(0XFFFEF5F3),
-                  side: BorderSide(color: Colors.black),
-                ),
-                Spacer(),
-                FaIcon(FontAwesomeIcons.filter)
-              ],
+                  Spacer(),
+                  FaIcon(FontAwesomeIcons.filter)
+                ],
+              ),
             ),
             (currentIndex == 0) ? Nutriton(size: size) : const Exercise(),
           ],

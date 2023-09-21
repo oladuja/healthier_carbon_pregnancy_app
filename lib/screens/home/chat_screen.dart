@@ -59,12 +59,14 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         appBar: ChatViewAppBar(
           elevation: theme.elevation,
-          backGroundColor: theme.appBarColor,
+          // backGroundColor: theme.appBarColor,
+          backGroundColor: const Color(0XFF666666).withOpacity(0.75),
           // profilePicture: Data.profileImage,
-          backArrowColor: theme.backArrowColor,
+          backArrowColor: Colors.white,
+          // backArrowColor: theme.backArrowColor,
           chatTitle: "Chat ",
-          chatTitleTextStyle: TextStyle(
-            color: theme.appBarTitleTextStyle,
+          chatTitleTextStyle: const TextStyle(
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
             letterSpacing: 0.25,
@@ -73,9 +75,9 @@ class _ChatScreenState extends State<ChatScreen> {
           actions: [
             IconButton(
               onPressed: _onThemeIconTap,
-              icon: FaIcon(
-                Icons.more_vert_rounded,
-                color: theme.themeIconColor,
+              icon: const FaIcon(
+                FontAwesomeIcons.magnifyingGlass,
+                color: Colors.white,
               ),
             ),
           ],

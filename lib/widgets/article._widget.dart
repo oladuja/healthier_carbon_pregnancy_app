@@ -30,25 +30,24 @@ class ArticleWidget extends StatelessWidget {
                     '1st Trimester',
                     style: TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     'Anxiety got you down? We got experts to help you overcome',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 10),
-
                   Row(
                     children: [
                       Text(
                         'Healthier Carbon',
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey,
                         ),
@@ -56,14 +55,14 @@ class ArticleWidget extends StatelessWidget {
                       Spacer(),
                       FaIcon(
                         FontAwesomeIcons.solidBookmark,
-                        size: 9,
+                        size: 12,
                         color: Color(0XFF666666),
                       ),
                       SizedBox(width: 10),
                       FaIcon(
                         FontAwesomeIcons.shareNodes,
                         color: Color(0XFF666666),
-                        size: 9,
+                        size: 12,
                       ),
                     ],
                   ),
@@ -77,6 +76,7 @@ class ArticleWidget extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/articles.png"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.all(
                   Radius.circular(5),

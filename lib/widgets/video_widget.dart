@@ -4,9 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthier_carbon_pregnancy_app/screens/home/blog_read_more.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String text;
+
   const VideoWidget({
     super.key,
     required this.size,
+    required this.text,
   });
 
   final Size size;
@@ -29,6 +32,7 @@ class VideoWidget extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/morevideos.png"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.all(
                   Radius.circular(5),
@@ -36,32 +40,34 @@ class VideoWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10),
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1st Trimester',
+                    text,
                     style: TextStyle(
                       fontSize: 12,
+                      color: Colors.black.withOpacity(0.7),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    'Anxiety got you down? We got experts to help you overcome',
+                  const SizedBox(height: 5),
+                  const Text(
+                    'Why you need vegetables in your diet',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Row(
+                  const SizedBox(height: 10),
+                  const Row(
                     children: [
                       Text(
                         'Duration: 52 mins',
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey,
                         ),
@@ -69,14 +75,14 @@ class VideoWidget extends StatelessWidget {
                       Spacer(),
                       FaIcon(
                         FontAwesomeIcons.download,
-                        size: 9,
+                        size: 12,
                         color: Color(0XFF666666),
                       ),
                       SizedBox(width: 10),
                       FaIcon(
-                        FontAwesomeIcons.shareNodes,
+                        FontAwesomeIcons.share,
                         color: Color(0XFF666666),
-                        size: 9,
+                        size: 12,
                       ),
                     ],
                   ),

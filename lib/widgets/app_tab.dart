@@ -25,7 +25,7 @@ class AppTab extends StatelessWidget {
         SizedBox(
           width: 75,
           child: Divider(
-            color: (selectedindex == index) ? Colors.black : Colors.white,
+            color: (selectedindex == index) ? Colors.black : Colors.transparent,
             thickness: 3,
           ),
         )

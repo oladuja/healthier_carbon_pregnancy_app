@@ -12,135 +12,160 @@ class Community extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+      child: SizedBox(
         width: size.width,
         child: Column(
           children: [
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(ProfileScreen.routeName),
-                  child: const CircleAvatar(
-                    radius: 18,
-                    backgroundImage: AssetImage('assets/images/dp.png'),
+            Container(
+              decoration: BoxDecoration(
+                color: const Color(0XFF666666).withOpacity(0.65),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(ProfileScreen.routeName),
+                    child: const CircleAvatar(
+                      radius: 18,
+                      backgroundImage: AssetImage('assets/images/dp.png'),
+                    ),
                   ),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: 219,
-                  height: 38,
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                      fillColor: const Color(0XFF808080).withOpacity(0.1),
-                      filled: true,
-                      hintText: 'Search',
-                      hintStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      enabled: true,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                  const Spacer(),
+                  const SizedBox(
+                    width: 219,
+                    height: 38,
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: 'Search',
+                        hintStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
                         ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(14.0),
+                        enabled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(14.0),
+                          ),
                         ),
-                      ),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(14.0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(14.0),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {},
-                  child: const FaIcon(
-                    FontAwesomeIcons.userPlus,
-                    color: Color(0XFF666666),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 15),
-            Row(
-              children: [
-                const Text(
-                  "Feed",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: const Color(0XFFE6E6E6),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => const ChatScreen(),
-                      ),
-                    ),
-                    child: const Text(
-                      "Chat with nurse",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const FaIcon(
+                      FontAwesomeIcons.userPlus,
+                      color: Colors.white,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 15),
-            const Row(
-              children: [
-                Chip(
-                  label: Text(
-                    "Popular",
-                    style: TextStyle(fontSize: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                children: [
+                  const Text(
+                    "Feed",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  backgroundColor: Color(0XFFFEF5F3),
-                  side: BorderSide(color: Colors.black),
-                ),
-                SizedBox(width: 5),
-                Chip(
-                  label: Text(
-                    "Latest",
-                    style: TextStyle(fontSize: 12),
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFFE6E6E6),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const ChatScreen(),
+                        ),
+                      ),
+                      child: const Text(
+                        "Chat with nurse",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
-                  backgroundColor: Color(0XFFFEF5F3),
-                  side: BorderSide(color: Colors.black),
-                ),
-                SizedBox(width: 5),
-                Chip(
-                  label: Text(
-                    "Saved",
-                    style: TextStyle(fontSize: 12),
-                  ),
-                  backgroundColor: Color(0XFFFEF5F3),
-                  side: BorderSide(color: Colors.black),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 15),
-            PostItem(
-              size: size,
-              image: "assets/images/feed.png",
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: const Row(
+                children: [
+                  Chip(
+                    label: Text(
+                      "Popular",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    backgroundColor: Color(0XFFFEF5F3),
+                    side: BorderSide(color: Colors.black),
+                  ),
+                  SizedBox(width: 5),
+                  Chip(
+                    label: Text(
+                      "Latest",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    backgroundColor: Color(0XFFFEF5F3),
+                    side: BorderSide(color: Colors.black),
+                  ),
+                  SizedBox(width: 5),
+                  Chip(
+                    label: Text(
+                      "Saved",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    backgroundColor: Color(0XFFFEF5F3),
+                    side: BorderSide(color: Colors.black),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 15),
-            PostItem(
-              size: size,
-              image: "assets/images/yoga.png",
+            Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 25.0 , vertical: 10) ,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color(0XFFFEF5F3),
+              ),
+              child: PostItem(
+                size: size,
+                image: "assets/images/feed.png",
+              ),
+            ),
+            const SizedBox(height: 15),
+            Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 25.0 , vertical: 10) ,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color(0XFFFEF5F3),
+              ),
+              child: PostItem(
+                size: size,
+                image: "assets/images/yoga.png",
+              ),
             ),
           ],
         ),

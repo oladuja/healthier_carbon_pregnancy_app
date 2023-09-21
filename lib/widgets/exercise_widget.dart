@@ -29,6 +29,7 @@ class ExerciseWidget extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/more_vid.png"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.all(
                   Radius.circular(5),
@@ -50,7 +51,7 @@ class ExerciseWidget extends StatelessWidget {
                   Text(
                     'Various gym equipment and how to use them',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -61,7 +62,7 @@ class ExerciseWidget extends StatelessWidget {
                       Text(
                         'Duration: 52 mins',
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey,
                         ),
@@ -69,14 +70,14 @@ class ExerciseWidget extends StatelessWidget {
                       Spacer(),
                       FaIcon(
                         FontAwesomeIcons.download,
-                        size: 9,
+                        size: 12,
                         color: Color(0XFF666666),
                       ),
                       SizedBox(width: 10),
                       FaIcon(
-                        FontAwesomeIcons.shareNodes,
+                        FontAwesomeIcons.share,
                         color: Color(0XFF666666),
-                        size: 9,
+                        size: 12,
                       ),
                     ],
                   ),

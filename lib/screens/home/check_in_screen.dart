@@ -10,215 +10,258 @@ class CheckInScreen extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15),
         width: size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 219,
-                  height: 38,
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                      fillColor: const Color(0XFF808080).withOpacity(0.1),
-                      filled: true,
-                      hintText: 'Search events',
-                      hintStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                      enabled: true,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 219,
+                    height: 38,
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        fillColor: const Color(0XFF808080).withOpacity(0.1),
+                        filled: true,
+                        hintText: 'Search events',
+                        hintStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
                         ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(14.0),
+                        enabled: true,
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(14.0),
+                          ),
                         ),
-                      ),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(14.0),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(14.0),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    color: const Color(0XFFFEF7F6),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: const Color(0XFF666666),
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFFFEF7F6),
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                        color: const Color(0XFF666666),
+                      ),
+                    ),
+                    child: const FaIcon(
+                      FontAwesomeIcons.video,
+                      size: 16,
+                      color: Color(0XFF666666),
                     ),
                   ),
-                  child: const FaIcon(
-                    FontAwesomeIcons.video,
-                    size: 16,
-                    color: Color(0XFF666666),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Container(
-                  padding: const EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    color: const Color(0XFFFEF7F6),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: const Color(0XFF666666),
+                  const SizedBox(width: 10),
+                  Container(
+                    padding: const EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFFFEF7F6),
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                        color: const Color(0XFF666666),
+                      ),
+                    ),
+                    child: const FaIcon(
+                      FontAwesomeIcons.solidBell,
+                      size: 16,
+                      color: Color(0XFF666666),
                     ),
                   ),
-                  child: const FaIcon(
-                    FontAwesomeIcons.solidBell,
-                    size: 16,
-                    color: Color(0XFF666666),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 15),
-            const Text(
-              "Live",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
+                "Live",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage("assets/images/live.png"),),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
-                    ),
-                  ),
-                  width: size.width,
-                  height: 165,
-                ),
-                const SizedBox(height: 5),
-                const Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Get to know your body better',
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ],
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color(0XFFFEF5F3),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/live.png"),
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
                       ),
                     ),
-                    CheckInButton(
-                      text: "Join Live",
-                    )
-                  ],
-                ),
-              ],
+                    width: size.width,
+                    height: 165,
+                  ),
+                  const SizedBox(height: 5),
+                  const Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Get to know your body better',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                      CheckInButton(
+                        text: "Join Live",
+                        color: Colors.red,
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
 
             //
 
             const SizedBox(height: 15),
-            const Text(
-              "Scheduled Check-in",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: const Text(
+                "Scheduled Check-in",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
             ),
             const SizedBox(height: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                                      image: DecorationImage(image: AssetImage("assets/images/schedule.png"),),
-
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
-                    ),
-                  ),
-                  width: size.width,
-                  height: 165,
-                ),
-                const SizedBox(height: 5),
-                const Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Eat Healthy',
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ],
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color(0XFFFEF5F3),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/schedule.png"),
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
                       ),
                     ),
-                    CheckInButton(text: 'Scheduled'),
-                  ],
-                ),
-              ],
+                    width: size.width,
+                    height: 165,
+                  ),
+                  const SizedBox(height: 5),
+                  const Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Eat Healthy',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                      CheckInButton(
+                        text: 'Scheduled',
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 30),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                                      image: DecorationImage(image: AssetImage("assets/images/schedule.png"),),
-
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
-                    ),
-                  ),
-                  width: size.width,
-                  height: 165,
-                ),
-                const SizedBox(height: 5),
-                const Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Eat Healthy',
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ],
+            Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 25.0 , vertical: 15) ,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color(0XFFFEF5F3),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/schedule.png"),
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
                       ),
                     ),
-                    CheckInButton(text: 'Scheduled'),
-                  ],
-                ),
-              ],
+                    width: size.width,
+                    height: 165,
+                  ),
+                  const SizedBox(height: 5),
+                  const Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Eat Healthy',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                      CheckInButton(
+                        text: 'Scheduled',
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -228,9 +271,12 @@ class CheckInScreen extends StatelessWidget {
 }
 
 class CheckInButton extends StatelessWidget {
+  final Color color;
+
   const CheckInButton({
     super.key,
     required this.text,
+    required this.color,
   });
   final String text;
 
@@ -239,7 +285,7 @@ class CheckInButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -248,7 +294,7 @@ class CheckInButton extends StatelessWidget {
               blurRadius: 4,
             ),
           ],
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(12),
           color: const Color(0XFFFEF5F3),
         ),
         child: Center(
@@ -256,8 +302,9 @@ class CheckInButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
+                color: color,
                 fontSize: 14,
               ),
             ),
