@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "220735521163",
+    "project_id": "carbonapp-dce72",
+    "storage_bucket": "carbonapp-dce72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220735521163:android:a3e148c7574512ffa16f8e",
+        "android_client_info": {
+          "package_name": "com.example.healthier_carbon_pregnancy_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk2OTJAUfdHMLN3Z8g0hU7g0iWrE1Pybg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/models/about_user.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
 import 'package:provider/provider.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/dob_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/dob_screen.dart';
 
 class StageScreen extends StatelessWidget {
   const StageScreen({super.key});

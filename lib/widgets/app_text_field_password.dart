@@ -24,7 +24,7 @@ class _AppTextFieldPasswordState extends State<AppTextFieldPassword> {
               });
             },
             child: Padding(
-                padding: EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10),
                 child: FaIcon(isVissible
                     ? FontAwesomeIcons.eye
                     : FontAwesomeIcons.eyeSlash))),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/chat_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/chat_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/post_item.dart';
 
 class Community extends StatelessWidget {
@@ -20,7 +20,7 @@ class Community extends StatelessWidget {
               decoration: BoxDecoration(
                 color: const Color(0XFF666666).withOpacity(0.65),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               child: Row(
                 children: [
                   GestureDetector(

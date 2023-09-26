@@ -122,7 +122,7 @@ class PostpartumScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: const Color(0XFFFEF5F3),
+                color: const Color(0XFFFEF9F8),
               ),
               child: const DisplayCalendar(),
             ),
@@ -131,7 +131,8 @@ class PostpartumScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0XFFFEF5F3),
               ),
-              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
                   Column(

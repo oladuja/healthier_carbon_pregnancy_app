@@ -1,23 +1,31 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/models/about_user.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/home_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/notification_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/about_you_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/dob_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/forgot_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/health_condition.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/loading_home_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/login_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/period_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/signup_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/splash_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/continue.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/stage_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/start_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/about_you_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/dob_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/forgot_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/health_condition.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/loading_home_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/period_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/signup_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/splash_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/continue.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
 import 'package:provider/provider.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(const App());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const App());
+}
 
 class App extends StatelessWidget {
   const App({super.key});

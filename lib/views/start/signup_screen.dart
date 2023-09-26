@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/login_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/stage_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field_password.dart';

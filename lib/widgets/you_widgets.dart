@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/chat_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/notification_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/schedule_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/chat_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/schedule_screen.dart';
 
 class ServiceToPurchaseList extends StatelessWidget {
   const ServiceToPurchaseList({

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/forgot_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/signup_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/stage_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/forgot_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/signup_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field_password.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String routeName = 'login-screen';
@@ -84,8 +86,12 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 45),
                   AppButton(
                     text: "SIGN IN",
-                    onTap: () => Navigator.of(context)
-                        .popAndPushNamed(StageScreen.routeName),
+                    onTap: () {
+                      Provider.of<AboutUser>(context, listen: false)
+                          .selectUserCondition(UserCondition.pregnant);
+                      Navigator.of(context)
+                          .popAndPushNamed(HomeScreen.routeName);
+                    },
                   ),
                   const SizedBox(height: 15),
                   GestureDetector(

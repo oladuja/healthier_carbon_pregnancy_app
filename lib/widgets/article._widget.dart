@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/blog_read_more.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/blog_read_more.dart';
 
 class ArticleWidget extends StatelessWidget {
   const ArticleWidget({

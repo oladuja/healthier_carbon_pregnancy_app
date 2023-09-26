@@ -1,7 +1,7 @@
 import 'package:chatview/chatview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/chat/theme.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/chat/data.dart';
+import 'package:healthier_carbon_pregnancy_app/views/chat/theme.dart';
+import 'package:healthier_carbon_pregnancy_app/views/chat/data.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {

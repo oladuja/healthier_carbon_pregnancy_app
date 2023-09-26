@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/health_condition.dart';
-import 'package:healthier_carbon_pregnancy_app/widgets/about_textfield.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/loading_home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 
-class AboutYouScreen extends StatelessWidget {
-  const AboutYouScreen({super.key});
-  static const String routeName = 'about-you-screen';
+class PeriodScreen extends StatelessWidget {
+  const PeriodScreen({super.key});
+  static const String routeName = 'period-screen';
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class AboutYouScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               children: [
-                const SizedBox(height: 25),
+                const SizedBox(height: 15),
                 GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
                   child: const Align(
@@ -33,33 +32,28 @@ class AboutYouScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 45),
+                const SizedBox(height: 50),
                 const Text(
-                  'About You',
+                  'Log the first day of your last \nperiod?',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 5),
-                const Text(
-                  'Tell us your weight and size',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
+                const SizedBox(height: 15),
+                CalendarDatePicker(
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2023),
+                  lastDate: DateTime(2024),
+                  onDateChanged: (_) {},
                 ),
+                const SizedBox(height: 15),
 
-                const SizedBox(height: 75),
-                //  Date Picker
-                const AboutAppTextField(text: "Height"),
-                const SizedBox(height: 30),
-                const AboutAppTextField(text: "Weight"),
-                const Spacer(),
                 AppButton(
-                  text: 'NEXT',
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(HealthScreen.routeName),
+                  text: "NEXT",
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(LoadingHomeScreen.routeName),
                 ),
                 const Spacer(),
                 Container(
@@ -71,7 +65,7 @@ class AboutYouScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 45),
+                // const SizedBox(height: 45),
               ],
             ),
           ),

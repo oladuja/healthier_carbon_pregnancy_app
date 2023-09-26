@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/video/live_streaming.dart';
 
 class CheckInScreen extends StatelessWidget {
   const CheckInScreen({super.key});
@@ -61,10 +63,17 @@ class CheckInScreen extends StatelessWidget {
                         color: const Color(0XFF666666),
                       ),
                     ),
-                    child: const FaIcon(
-                      FontAwesomeIcons.video,
-                      size: 16,
-                      color: Color(0XFF666666),
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => MyHomePage(),
+                        ),
+                      ),
+                      child: const FaIcon(
+                        FontAwesomeIcons.video,
+                        size: 16,
+                        color: Color(0XFF666666),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -77,10 +86,17 @@ class CheckInScreen extends StatelessWidget {
                         color: const Color(0XFF666666),
                       ),
                     ),
-                    child: const FaIcon(
-                      FontAwesomeIcons.solidBell,
-                      size: 16,
-                      color: Color(0XFF666666),
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const NotificationScreen(),
+                        ),
+                      ),
+                      child: const FaIcon(
+                        FontAwesomeIcons.solidBell,
+                        size: 16,
+                        color: Color(0XFF666666),
+                      ),
                     ),
                   ),
                 ],
@@ -121,9 +137,9 @@ class CheckInScreen extends StatelessWidget {
                     height: 165,
                   ),
                   const SizedBox(height: 5),
-                  const Row(
+                  Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -139,9 +155,16 @@ class CheckInScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      CheckInButton(
-                        text: "Join Live",
-                        color: Colors.red,
+                      GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) =>  MyHomePage(),
+                          ),
+                        ),
+                        child: const CheckInButton(
+                          text: "Join Live",
+                          color: Colors.red,
+                        ),
                       )
                     ],
                   ),
@@ -152,9 +175,9 @@ class CheckInScreen extends StatelessWidget {
             //
 
             const SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
                 "Scheduled Check-in",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -215,7 +238,8 @@ class CheckInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Container(
-                   padding: const EdgeInsets.symmetric(horizontal: 25.0 , vertical: 15) ,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0XFFFEF5F3),

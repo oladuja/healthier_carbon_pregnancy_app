@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/models/about_user.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/advice_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/check_in_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/community.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/postpartum_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/wellness.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/you_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/advice_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/check_in_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/community.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/postpartum_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/wellness.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/you_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home-screen';
-
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -23,6 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     keepPage: true,
     initialPage: 0,
   );
+
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,19 +45,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        currentIndex: index,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 10,
         unselectedFontSize: 10,
         onTap: (value) {
           setState(() {
             pageController.jumpToPage(value);
+            index = value;
           });
         },
-        selectedItemColor: const Color(0XFFA6A6A6),
+        selectedItemColor: const Color.fromARGB(255, 61, 61, 61),
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.user),
+            icon: FaIcon(FontAwesomeIcons.solidUser),
             label: "You",
           ),
           BottomNavigationBarItem(

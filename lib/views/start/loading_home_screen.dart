@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/home_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoadingHomeScreen extends StatefulWidget {

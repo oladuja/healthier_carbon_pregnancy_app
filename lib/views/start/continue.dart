@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/start_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 
 class ContinueScreen extends StatelessWidget {

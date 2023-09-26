@@ -1,6 +1,6 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/continue.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/continue.dart';
 
 class SplashScreen extends StatelessWidget {
   static const String routeName = 'splash-screen';

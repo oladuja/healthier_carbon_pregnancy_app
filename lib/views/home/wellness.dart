@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/exercise.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/nutrition.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/home/profile_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/exercise.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/nutrition.dart';
+import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_tab.dart';
 
 class WellnessScreen extends StatefulWidget {
@@ -104,11 +103,11 @@ class _WellnessScreenState extends State<WellnessScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Row(
                 children: [
-                  Chip(
+                  const Chip(
                     label: Text(
                       "Top Videos",
                       style: TextStyle(fontSize: 12),
@@ -116,8 +115,8 @@ class _WellnessScreenState extends State<WellnessScreen> {
                     backgroundColor: Color(0XFFFEF5F3),
                     side: BorderSide(color: Colors.black),
                   ),
-                  SizedBox(width: 15),
-                  Chip(
+                  const SizedBox(width: 15),
+                  const Chip(
                     label: Text(
                       "New",
                       style: TextStyle(fontSize: 12),
@@ -125,8 +124,8 @@ class _WellnessScreenState extends State<WellnessScreen> {
                     backgroundColor: Color(0XFFFEF5F3),
                     side: BorderSide(color: Colors.black),
                   ),
-                  SizedBox(width: 15),
-                  Chip(
+                  const SizedBox(width: 15),
+                  const Chip(
                     label: Text(
                       "Saved",
                       style: TextStyle(fontSize: 12),
@@ -134,8 +133,12 @@ class _WellnessScreenState extends State<WellnessScreen> {
                     backgroundColor: Color(0XFFFEF5F3),
                     side: BorderSide(color: Colors.black),
                   ),
-                  Spacer(),
-                  FaIcon(FontAwesomeIcons.filter)
+                  const Spacer(),
+                  Image.asset(
+                    'assets/images/mi_filter.png',
+                    height: 36,
+                    width: 36,
+                  )
                 ],
               ),
             ),

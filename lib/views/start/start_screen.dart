@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/signup_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/signup_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/sign_with_button.dart';
 
@@ -52,7 +53,7 @@ class StartScreen extends StatelessWidget {
               const SizedBox(height: 15),
               GestureDetector(
                 onTap: () =>
-                    Navigator.of(context).pushNamed(SignUpScreen.routeName),
+                    Navigator.of(context).pushNamed(LoginScreen.routeName),
                 child: const Text(
                   'Have an account? SIGN IN',
                   style: TextStyle(

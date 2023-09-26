@@ -36,6 +36,7 @@ class YouScreen extends StatelessWidget {
             ),
             const SizedBox(height: 15),
 
+    
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               decoration: BoxDecoration(
@@ -44,13 +45,13 @@ class YouScreen extends StatelessWidget {
               ),
               child: const DisplayCalendar(),
             ),
-            const SizedBox(height: 15),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0XFFFEF5F3),
               ),
-              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
                   Column(

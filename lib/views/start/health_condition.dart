@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/screens/start/period_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/period_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 
 class HealthScreen extends StatelessWidget {
