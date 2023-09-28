@@ -74,13 +74,22 @@ class _ILSScreenState extends State<ILSScreen> {
     return WillPopScope(
       onWillPop: () => _onWillPop(),
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          backgroundColor: const Color(0xff666666),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: const Text('Live Session'),
+          title: const Text(
+            'Live Session',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
         ),
         //Showing the Speaker or Viewer View based on the mode
         body: isJoined
