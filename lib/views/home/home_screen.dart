@@ -31,6 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: PageView(
+          onPageChanged: (value) {
+            setState(() {
+              index = value;
+            });
+          },
           controller: pageController,
           children: [
             (Provider.of<AboutUser>(context).userCondition ==

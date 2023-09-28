@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/views/video/live_streaming.dart';
+import 'package:healthier_carbon_pregnancy_app/views/video/join_screen.dart';
 
 class CheckInScreen extends StatelessWidget {
   const CheckInScreen({super.key});
@@ -66,7 +66,7 @@ class CheckInScreen extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => LiveScreen(),
+                          builder: (_) => JoinScreen(),
                         ),
                       ),
                       child: const FaIcon(
@@ -155,15 +155,13 @@ class CheckInScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      GestureDetector(
+                      CheckInButton(
+                        text: "Join Live",
+                        color: Colors.red,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => LiveScreen(),
+                            builder: (_) => JoinScreen(),
                           ),
-                        ),
-                        child: const CheckInButton(
-                          text: "Join Live",
-                          color: Colors.red,
                         ),
                       )
                     ],
@@ -209,9 +207,9 @@ class CheckInScreen extends StatelessWidget {
                     height: 165,
                   ),
                   const SizedBox(height: 5),
-                  const Row(
+                  Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -228,6 +226,7 @@ class CheckInScreen extends StatelessWidget {
                         ),
                       ),
                       CheckInButton(
+                        onTap: () {},
                         text: 'Scheduled',
                         color: Colors.black,
                       ),
@@ -260,9 +259,9 @@ class CheckInScreen extends StatelessWidget {
                     height: 165,
                   ),
                   const SizedBox(height: 5),
-                  const Row(
+                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -279,6 +278,7 @@ class CheckInScreen extends StatelessWidget {
                         ),
                       ),
                       CheckInButton(
+                        onTap: () {},
                         text: 'Scheduled',
                         color: Colors.black,
                       ),
@@ -297,17 +297,20 @@ class CheckInScreen extends StatelessWidget {
 class CheckInButton extends StatelessWidget {
   final Color color;
 
+  final void Function() onTap;
+
   const CheckInButton({
     super.key,
     required this.text,
     required this.color,
+    required this.onTap,
   });
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         decoration: BoxDecoration(

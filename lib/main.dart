@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
@@ -17,7 +16,6 @@ import 'package:healthier_carbon_pregnancy_app/views/start/splash_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/continue.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
-import 'package:healthier_carbon_pregnancy_app/views/web/web_app_live.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
@@ -26,11 +24,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  if (kIsWeb) {
-    runApp(const WebApp());
-  } else {
     runApp(const App());
-  }
 }
 
 class App extends StatelessWidget {
