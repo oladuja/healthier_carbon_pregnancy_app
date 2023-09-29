@@ -70,7 +70,8 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
     _room.on(Events.roomLeft, () {
       participants.clear();
-      Navigator.popUntil(context, ModalRoute.withName('/'));
+      // Navigator.popUntil(context, ModalRoute.withName('/'));
+      Navigator.pop(context);
     });
   }
 
@@ -86,7 +87,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
       onWillPop: () => _onWillPop(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('VideoSDK QuickStart'),
+          title: const Text('Live Seesion'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -98,7 +99,8 @@ class _MeetingScreenState extends State<MeetingScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -106,7 +108,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     ),
                     itemBuilder: (context, index) {
                       return ParticipantTile(
-                        key: Key(participants.values.elementAt(index).id),
+                          key: Key(participants.values.elementAt(index).id),
                           participant: participants.values.elementAt(index));
                     },
                     itemCount: participants.length,

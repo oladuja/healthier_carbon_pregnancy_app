@@ -48,17 +48,13 @@ class JoinScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('VideoSDK QuickStart'),
+        title: const Text('Join Live'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () => onCreateButtonPressed(context),
-              child: const Text('Create Meeting'),
-            ),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
               child: TextField(
