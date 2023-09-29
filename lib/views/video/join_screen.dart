@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'api_call.dart';
 import 'meeting_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class JoinScreen extends StatelessWidget {
   final _meetingIdController = TextEditingController();
@@ -44,6 +45,12 @@ class JoinScreen extends StatelessWidget {
     }
   }
 
+  Future<String> loadId() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    var documentReference = await firestore.collection('roomId').get();
+    var id = documentReference.docs[0].id;
+    return id;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +62,17 @@ class JoinScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            FutureBuilder(
+                future: loadId(),
+                builder: (_, snapShot) {
+                  if (snapShot.connectionState == ConnectionState.waiting) {
+                    return const Text('loading');
+                  }
+                  return Text(snapShot.hasData
+                      ? 'Live Meeting ID: ${snapShot.data}'
+                      : 'No Live Meeting, Come Back Later');
+                },
+              ),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
               child: TextField(
