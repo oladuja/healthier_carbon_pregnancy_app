@@ -70,6 +70,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '220735521163',
     projectId: 'carbonapp-dce72',
     storageBucket: 'carbonapp-dce72.appspot.com',
-    iosBundleId: 'com.example.healthierCarbonPregnancyApp',
+    iosBundleId: 'com.example.healthiercarbon',
   );
 }

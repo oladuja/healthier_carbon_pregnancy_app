@@ -1,4 +1,4 @@
-package com.example.healthier_carbon_pregnancy_app
+package com.example.healthiercarbon
 
 import io.flutter.embedding.android.FlutterActivity
 
