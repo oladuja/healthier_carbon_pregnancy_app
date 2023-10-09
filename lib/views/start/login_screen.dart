@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/forgot_screen.dart';
@@ -15,6 +16,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -71,7 +75,10 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  const AppTextField(type: TextInputType.emailAddress),
+                  AppTextField(
+                    type: TextInputType.emailAddress,
+                    controller: email,
+                  ),
                   const SizedBox(height: 35),
                   const Align(
                     alignment: Alignment.centerLeft,
@@ -82,15 +89,25 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  const AppTextFieldPassword(),
+                  AppTextFieldPassword(controller: password),
                   const SizedBox(height: 45),
                   AppButton(
                     text: "SIGN IN",
-                    onTap: () {
-                      Provider.of<AboutUser>(context, listen: false)
-                          .selectUserCondition(UserCondition.pregnant);
-                      Navigator.of(context)
-                          .popAndPushNamed(HomeScreen.routeName);
+                    onTap: () async {
+                      try {
+                        Provider.of<AboutUser>(context, listen: false)
+                            .selectUserCondition(UserCondition.pregnant);
+                        Auth.account(email.text, password.text, AuthMode.login);
+                        Navigator.of(context)
+                            .popAndPushNamed(HomeScreen.routeName);
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('AN error occured'),
+                          ),
+                        );
+                      }
                     },
                   ),
                   const SizedBox(height: 15),

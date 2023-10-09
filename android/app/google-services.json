@@ -7,12 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:220735521163:android:a3e148c7574512ffa16f8e",
+        "mobilesdk_app_id": "1:220735521163:android:38b75759f182fdf0a16f8e",
         "android_client_info": {
           "package_name": "com.example.healthiercarbon"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "220735521163-9hbjse3g1lhodeafrseliheuuqd70nom.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthiercarbon",
+            "certificate_hash": "ee6742272714d7fe996c283bff8155a49aed84c9"
+          }
+        },
+        {
+          "client_id": "220735521163-s6aeehhcnnjkq7f36f0c2hj82e34367s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBk2OTJAUfdHMLN3Z8g0hU7g0iWrE1Pybg"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220735521163-s6aeehhcnnjkq7f36f0c2hj82e34367s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "220735521163-3245r3lrco1qkgadq22a6qd9phqrcejj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.liveApp"
+              }
+            }
+          ]
         }
       }
     }

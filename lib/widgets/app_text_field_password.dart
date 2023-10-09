@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppTextFieldPassword extends StatefulWidget {
+  final TextEditingController controller;
+
   const AppTextFieldPassword({
     super.key,
+    required this.controller,
   });
 
   @override
@@ -15,6 +18,7 @@ class _AppTextFieldPasswordState extends State<AppTextFieldPassword> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       cursorColor: Colors.black,
       decoration: InputDecoration(
         suffixIcon: GestureDetector(

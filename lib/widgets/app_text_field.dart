@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
   final TextInputType type;
+  final TextEditingController controller;
 
   const AppTextField({
     super.key,
     required this.type,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       keyboardType: type,
       cursorColor: Colors.black,
       decoration: InputDecoration(

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
@@ -19,12 +20,15 @@ import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
+late final FirebaseApp app;
+late final FirebaseAuth auth;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-    runApp(const App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -54,7 +58,7 @@ class App extends StatelessWidget {
           AboutYouScreen.routeName: (_) => const AboutYouScreen(),
           HealthScreen.routeName: (_) => const HealthScreen(),
           PeriodScreen.routeName: (_) => const PeriodScreen(),
-          ForgotPasswordScreen.routeName: (_) => const ForgotPasswordScreen(),
+          ForgotPasswordScreen.routeName: (_) =>  ForgotPasswordScreen(),
           LoadingHomeScreen.routeName: (_) => const LoadingHomeScreen(),
           ProfileScreen.routeName: (_) => const ProfileScreen(),
           NotificationScreen.routeName: (_) => const NotificationScreen(),

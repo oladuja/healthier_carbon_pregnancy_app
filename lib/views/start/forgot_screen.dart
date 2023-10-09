@@ -3,9 +3,11 @@ import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+  ForgotPasswordScreen({super.key});
 
   static const String routeName = 'forgot-password-screen';
+
+  final TextEditingController email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +19,18 @@ class ForgotPasswordScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 60),
             GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Back',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+              onTap: () => Navigator.of(context).pop(),
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Back',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+              ),
+            ),
             const Text(
               'Recover Password',
               style: TextStyle(
@@ -36,9 +38,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const AppTextField(type: TextInputType.emailAddress),
+            AppTextField(type: TextInputType.emailAddress, controller: email),
             const SizedBox(height: 50),
-         const AppButton(text: "Recover"),
+            const AppButton(text: "Recover"),
             const Spacer(),
             Container(
               width: 150,

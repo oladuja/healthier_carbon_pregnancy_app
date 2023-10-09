@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,19 +49,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBAjXAKzjiw4epgNJeY3gIpTmQDMGGbjBA',
-    appId: '1:220735521163:web:f1b5ee9f44b228dca16f8e',
-    messagingSenderId: '220735521163',
-    projectId: 'carbonapp-dce72',
-    authDomain: 'carbonapp-dce72.firebaseapp.com',
-    storageBucket: 'carbonapp-dce72.appspot.com',
-    measurementId: 'G-3QLYERPTCC',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBk2OTJAUfdHMLN3Z8g0hU7g0iWrE1Pybg',
-    appId: '1:220735521163:android:a3e148c7574512ffa16f8e',
+    appId: '1:220735521163:android:38b75759f182fdf0a16f8e',
     messagingSenderId: '220735521163',
     projectId: 'carbonapp-dce72',
     storageBucket: 'carbonapp-dce72.appspot.com',
@@ -66,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAAleQqOniZ-eHxG_xdmi_57BKYHrJhA2Y',
-    appId: '1:220735521163:ios:738ebbfeddc4e984a16f8e',
+    appId: '1:220735521163:ios:871b07fa6a718aaea16f8e',
     messagingSenderId: '220735521163',
     projectId: 'carbonapp-dce72',
     storageBucket: 'carbonapp-dce72.appspot.com',
+    androidClientId: '220735521163-bdbbkskfv9qkldtm8c2ha9hceu8u74f6.apps.googleusercontent.com',
     iosBundleId: 'com.example.healthiercarbon',
   );
 }

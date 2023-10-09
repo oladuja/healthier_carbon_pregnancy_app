@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
@@ -12,6 +13,10 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
+    final TextEditingController name = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -74,8 +79,9 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const AppTextField(
+                  AppTextField(
                     type: TextInputType.name,
+                    controller: name,
                   ),
                   const SizedBox(height: 15),
                   const Align(
@@ -88,8 +94,9 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const AppTextField(
+                  AppTextField(
                     type: TextInputType.emailAddress,
+                    controller: email,
                   ),
                   const SizedBox(height: 15),
                   const Align(
@@ -103,14 +110,27 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  const AppTextFieldPassword(),
+                  AppTextFieldPassword(
+                    controller: password,
+                  ),
                   const SizedBox(height: 45),
                   AppButton(
-                    text: "CONTINUE",
-                    onTap: () => Navigator.of(context).popAndPushNamed(
-                      StageScreen.routeName,
-                    ),
-                  ),
+                      text: "CONTINUE",
+                      onTap: () async {
+                        try {
+                          Auth.account(
+                              email.text, password.text, AuthMode.login);
+                          Navigator.of(context)
+                              .popAndPushNamed(StageScreen.routeName);
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('AN error occured'),
+                            ),
+                          );
+                        }
+                      }),
                   const SizedBox(height: 15),
                   const Text(
                     'By clicking continue, you agree to our Terms of\nUse and Privacy Policy',
