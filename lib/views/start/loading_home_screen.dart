@@ -6,7 +6,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoadingHomeScreen extends StatefulWidget {
   static const String routeName = 'loading-home-screen';
-
+ 
   const LoadingHomeScreen({super.key});
 
   @override

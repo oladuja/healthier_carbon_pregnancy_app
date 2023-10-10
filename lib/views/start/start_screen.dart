@@ -9,6 +9,7 @@ import 'package:healthier_carbon_pregnancy_app/models/user.dart' as user;
 import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/signup_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/sign_with_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,7 +46,7 @@ class StartScreen extends StatelessWidget {
                 onTap: () async {
                   try {
                     await Auth.signInWithGoogle();
-                    logger.i(auth.currentUser!.photoURL);
+                    logger.i(auth.currentUser!.email);
                     await FireStore().addUserToDatabase(
                       user.User(
                         id: auth.currentUser!.uid,
@@ -64,7 +65,7 @@ class StartScreen extends StatelessWidget {
                     prefs.setBool('isUserLoggedIn', true);
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (_) => const HomeScreen(),
+                        builder: (_) => const StageScreen(),
                       ),
                       (route) => false,
                     );
@@ -88,7 +89,7 @@ class StartScreen extends StatelessWidget {
                 },
                 size: size,
                 icon: FontAwesomeIcons.google,
-                text: 'SIGN UP WITH GOOGLE',
+                text: 'SIGN IN WITH GOOGLE',
               ),
               // const SizedBox(height: 15),
               // SignWithButton(

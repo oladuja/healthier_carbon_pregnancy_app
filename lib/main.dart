@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/provider/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
@@ -18,16 +19,23 @@ import 'package:healthier_carbon_pregnancy_app/views/start/continue.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 
-late final FirebaseApp app;
 late final FirebaseAuth auth;
+late final FirebaseApp app;
+late final SharedPreferences prefs;
+late bool isUserLoggedIn;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+  app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  auth = FirebaseAuth.instanceFor(app: app);
+  prefs = await SharedPreferences.getInstance();
+
+  isUserLoggedIn = prefs.getBool('isUserLoggedIn') ?? false;
   runApp(const App());
 }
 
@@ -40,6 +48,9 @@ class App extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AboutUser(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CreateNewUser(),
         ),
       ],
       child: MaterialApp(
@@ -58,7 +69,7 @@ class App extends StatelessWidget {
           AboutYouScreen.routeName: (_) => const AboutYouScreen(),
           HealthScreen.routeName: (_) => const HealthScreen(),
           PeriodScreen.routeName: (_) => const PeriodScreen(),
-          ForgotPasswordScreen.routeName: (_) =>  ForgotPasswordScreen(),
+          ForgotPasswordScreen.routeName: (_) => ForgotPasswordScreen(),
           LoadingHomeScreen.routeName: (_) => const LoadingHomeScreen(),
           ProfileScreen.routeName: (_) => const ProfileScreen(),
           NotificationScreen.routeName: (_) => const NotificationScreen(),
