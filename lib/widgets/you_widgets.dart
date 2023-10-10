@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/chat_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/schedule_screen.dart';
+import 'package:provider/provider.dart';
 
 class ServiceToPurchaseList extends StatelessWidget {
   const ServiceToPurchaseList({
@@ -254,6 +256,8 @@ class DisplayDashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 15,
@@ -271,40 +275,40 @@ class DisplayDashBoard extends StatelessWidget {
               color: const Color(0XFFFEF5F3),
             ),
             padding: const EdgeInsets.all(10),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                FaIcon(
+                const FaIcon(
                   FontAwesomeIcons.person,
                   color: Color(0XFF666666),
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Weight",
                       style: TextStyle(fontSize: 10),
                     ),
                     Text(
-                      "234lb",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                      user.user.weight,
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Height",
                       style: TextStyle(fontSize: 10),
                     ),
                     Text(
-                      "5 ft 7\"",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                      user.user.weight,
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -341,10 +345,12 @@ class DisplayDashBoard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        const Text(
-                          "18 weeks",
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
+                        Text(
+                          '${(user.user.period.toDate().difference(DateTime.now()).inDays / 7).floor().toString()} Weeks',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -380,8 +386,13 @@ class DisplayDashBoard extends StatelessWidget {
 }
 
 class HomeAppBar extends StatelessWidget {
+  final String name;
+  final String url;
+
   const HomeAppBar({
     super.key,
+    required this.name,
+    required this.url,
   });
 
   @override
@@ -390,15 +401,15 @@ class HomeAppBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () => Navigator.of(context).pushNamed(ProfileScreen.routeName),
-          child: const CircleAvatar(
+          child: CircleAvatar(
             radius: 18,
-            backgroundImage: AssetImage('assets/images/dp.png'),
+            backgroundImage: NetworkImage(url),
           ),
         ),
         const Spacer(),
-        const Text(
-          "Welcome Judith",
-          style: TextStyle(
+        Text(
+          "Welcome $name",
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),

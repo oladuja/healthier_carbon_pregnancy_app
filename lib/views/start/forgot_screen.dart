@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field.dart';
 
@@ -40,7 +41,17 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
             AppTextField(type: TextInputType.emailAddress, controller: email),
             const SizedBox(height: 50),
-            const AppButton(text: "Recover"),
+            AppButton(
+                text: "Recover",
+                onTap: () {
+                  Auth.resetPassword(email.text);
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Link have been sent to your email'),
+                    ),
+                  );
+                }),
             const Spacer(),
             Container(
               width: 150,

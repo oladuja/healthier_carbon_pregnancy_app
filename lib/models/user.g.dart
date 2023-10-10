@@ -11,11 +11,13 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       name: json['name'] as String,
       email: json['email'] as String,
       stage: json['stage'] as String,
-      dob: json['dob'] as String,
+      dob: const TimestampConverter().fromJson(json['dob'] as Timestamp?),
       height: json['height'] as String,
       weight: json['weight'] as String,
       healthCondition: json['healthCondition'] as String,
-      period: json['period'] as String,
+      period: const TimestampConverter().fromJson(json['period'] as Timestamp?),
+      imageUrl: json['imageUrl'] as String? ??
+          'https://www.nicepng.com/png/full/933-9332131_profile-picture-default-png.png',
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -23,9 +25,10 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
       'stage': instance.stage,
-      'dob': instance.dob,
       'height': instance.height,
       'weight': instance.weight,
       'healthCondition': instance.healthCondition,
-      'period': instance.period,
+      'period': const TimestampConverter().toJson(instance.period),
+      'dob': const TimestampConverter().toJson(instance.dob),
+      'imageUrl': instance.imageUrl,
     };

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/exercise.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/nutrition.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_tab.dart';
+import 'package:provider/provider.dart';
 
 class WellnessScreen extends StatefulWidget {
   const WellnessScreen({super.key});
@@ -16,6 +18,8 @@ class _WellnessScreenState extends State<WellnessScreen> {
 
   @override
   Widget build(BuildContext context) {
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     Size size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -32,9 +36,9 @@ class _WellnessScreenState extends State<WellnessScreen> {
                   GestureDetector(
                     onTap: () => Navigator.of(context)
                         .pushNamed(ProfileScreen.routeName),
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 18,
-                      backgroundImage: AssetImage('assets/images/dp.png'),
+                      backgroundImage: NetworkImage(user.user.imageUrl),
                     ),
                   ),
                   // const Spacer(),

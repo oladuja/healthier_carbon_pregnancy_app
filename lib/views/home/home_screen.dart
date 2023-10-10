@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/advice_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/check_in_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/community.dart';
@@ -26,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -38,8 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           controller: pageController,
           children: [
-            (Provider.of<AboutUser>(context).userCondition ==
-                    UserCondition.pregnant)
+            (user.user.stage == 'pregnant')
                 ? YouScreen(size: size)
                 : PostpartumScreen(size: size),
             const CheckInScreen(),

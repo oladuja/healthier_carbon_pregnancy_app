@@ -8,6 +8,7 @@ class HealthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -114,9 +115,10 @@ class HealthScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                 AppButton(
+                AppButton(
                   text: "NEXT",
-                  onTap: () => Navigator.of(context).pushNamed(PeriodScreen.routeName),
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(PeriodScreen.routeName),
                 ),
                 const Spacer(),
                 Container(
@@ -129,7 +131,6 @@ class HealthScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 45),
-
               ],
             ),
           ),

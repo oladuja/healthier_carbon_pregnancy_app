@@ -12,4 +12,12 @@ class FireStore {
       rethrow;
     }
   }
+
+  Future<DocumentSnapshot<Map<String, dynamic>>> getUser(String id) async {
+    try {
+      return store.collection('users').doc(id).get();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

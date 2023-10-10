@@ -1,6 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/fire_store.dart';
+import 'package:healthier_carbon_pregnancy_app/main.dart';
+import 'package:healthier_carbon_pregnancy_app/models/user.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/loading_home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
+import 'package:provider/provider.dart';
 
 class PeriodScreen extends StatelessWidget {
   const PeriodScreen({super.key});
@@ -9,6 +15,8 @@ class PeriodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -46,14 +54,45 @@ class PeriodScreen extends StatelessWidget {
                   initialDate: DateTime.now(),
                   firstDate: DateTime(2023),
                   lastDate: DateTime(2024),
-                  onDateChanged: (_) {},
+                  onDateChanged: (date) {
+                    user.setPeriod(Timestamp.fromDate(date));
+                  },
+                  currentDate: DateTime.now(),
                 ),
                 const SizedBox(height: 15),
 
                 AppButton(
                   text: "NEXT",
-                  onTap: () => Navigator.of(context)
-                      .pushNamed(LoadingHomeScreen.routeName),
+                  onTap: () async {
+                    try {
+                      await FireStore().addUserToDatabase(
+                        User(
+                          id: auth.currentUser!.uid,
+                          name: auth.currentUser!.displayName ?? user.user.name,
+                          email: auth.currentUser!.email ?? user.user.email,
+                          stage: user.user.stage,
+                          dob: user.user.dob,
+                          height: user.user.height,
+                          weight: user.user.weight,
+                          healthCondition: user.user.healthCondition,
+                          period: user.user.period,
+                        ).toJson(),
+                      );
+                      prefs.setBool('isUserLoggedIn', true);
+                      var data =
+                          await FireStore().getUser(auth.currentUser!.uid);
+                      user.setProfile(data.data()!);
+                      Navigator.of(context)
+                          .pushNamed(LoadingHomeScreen.routeName);
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('An error occured'),
+                        ),
+                      );
+                    }
+                  },
                 ),
                 const Spacer(),
                 Container(

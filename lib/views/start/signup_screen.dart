@@ -1,22 +1,28 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field_password.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String routeName = 'signup-screen';
-  const SignUpScreen({super.key});
 
+  SignUpScreen({super.key});
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController name = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    CreateNewUser user = Provider.of<CreateNewUser>(context, listen: false);
 
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
-    final TextEditingController name = TextEditingController();
+    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: SafeArea(
@@ -36,122 +42,147 @@ class SignUpScreen extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                children: [
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Sign Up',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      GestureDetector(
-                        onTap: () => Navigator.of(context)
-                            .popAndPushNamed(LoginScreen.routeName),
-                        child: const Text(
-                          style: TextStyle(fontSize: 12),
-                          'Sign In',
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // const Text(
+                        //   'Sign Up',
+                        //   style: TextStyle(fontSize: 12),
+                        // ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context)
+                              .popAndPushNamed(LoginScreen.routeName),
+                          child: const Text(
+                            style: TextStyle(fontSize: 12),
+                            'Sign In',
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Create Account',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  const Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Create Account',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    ),
+                    const Spacer(),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Name',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Name',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  AppTextField(
-                    type: TextInputType.name,
-                    controller: name,
-                  ),
-                  const SizedBox(height: 15),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Email',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  AppTextField(
-                    type: TextInputType.emailAddress,
-                    controller: email,
-                  ),
-                  const SizedBox(height: 15),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Password',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  AppTextFieldPassword(
-                    controller: password,
-                  ),
-                  const SizedBox(height: 45),
-                  AppButton(
-                      text: "CONTINUE",
-                      onTap: () async {
-                        try {
-                          Auth.account(
-                              email.text, password.text, AuthMode.login);
-                          Navigator.of(context)
-                              .popAndPushNamed(StageScreen.routeName);
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('AN error occured'),
-                            ),
-                          );
+                    AppTextField(
+                      type: TextInputType.name,
+                      controller: name,
+                      validator: (value) {
+                        if (value!.length < 3) {
+                          return 'Name must be more than 3 Characters';
                         }
-                      }),
-                  const SizedBox(height: 15),
-                  const Text(
-                    'By clicking continue, you agree to our Terms of\nUse and Privacy Policy',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                        return null;
+                      },
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/logo.png'),
+                    const SizedBox(height: 15),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Email',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                ],
+                    AppTextField(
+                        type: TextInputType.emailAddress,
+                        controller: email,
+                        validator: (value) {
+                          if (!EmailValidator.validate(email.text.trim())) {
+                            return 'Invalid Email';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 15),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Password',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    AppTextFieldPassword(
+                        controller: password,
+                        validator: (value) {
+                          if (value!.length < 6) {
+                            return 'Password must be more than 5 Characters';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 45),
+                    AppButton(
+                        text: "CONTINUE",
+                        onTap: () async {
+                          if (formKey.currentState!.validate()) {
+                            try {
+                              Auth.account(
+                                  email.text, password.text, AuthMode.register);
+                              Navigator.of(context)
+                                  .popAndPushNamed(StageScreen.routeName);
+                              user.setName(name.text.trim());
+                              user.setEmail(email.text.trim());
+                            } catch (e) {
+                              ScaffoldMessenger.of(context)
+                                  .hideCurrentSnackBar();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('An error occured'),
+                                ),
+                              );
+                            }
+                          }
+                        }),
+                    const SizedBox(height: 15),
+                    const Text(
+                      'By clicking continue, you agree to our Terms of\nUse and Privacy Policy',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/logo.png'),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                  ],
+                ),
               ),
             ),
           ),

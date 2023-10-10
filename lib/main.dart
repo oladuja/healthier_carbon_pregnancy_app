@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:healthier_carbon_pregnancy_app/provider/create_new_user.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/log.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/about_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
@@ -44,6 +45,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    logger.i(isUserLoggedIn);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -56,17 +58,18 @@ class App extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
-        initialRoute: SplashScreen.routeName,
+        initialRoute:
+            isUserLoggedIn ? HomeScreen.routeName : SplashScreen.routeName,
         routes: {
           SplashScreen.routeName: (_) => const SplashScreen(),
           HomeScreen.routeName: (_) => const HomeScreen(),
           ContinueScreen.routeName: (_) => const ContinueScreen(),
           StartScreen.routeName: (_) => const StartScreen(),
-          LoginScreen.routeName: (_) => const LoginScreen(),
-          SignUpScreen.routeName: (_) => const SignUpScreen(),
+          LoginScreen.routeName: (_) => LoginScreen(),
+          SignUpScreen.routeName: (_) => SignUpScreen(),
           StageScreen.routeName: (_) => const StageScreen(),
           DOBScreen.routeName: (_) => const DOBScreen(),
-          AboutYouScreen.routeName: (_) => const AboutYouScreen(),
+          AboutYouScreen.routeName: (_) => AboutYouScreen(),
           HealthScreen.routeName: (_) => const HealthScreen(),
           PeriodScreen.routeName: (_) => const PeriodScreen(),
           ForgotPasswordScreen.routeName: (_) => ForgotPasswordScreen(),

@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/about_you_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
+import 'package:provider/provider.dart';
 
 class DOBScreen extends StatefulWidget {
   const DOBScreen({super.key});
@@ -16,6 +19,8 @@ class _DOBScreenState extends State<DOBScreen> {
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     DateTime? selectedDate;
     return Scaffold(
       body: Padding(
@@ -44,6 +49,8 @@ class _DOBScreenState extends State<DOBScreen> {
                   selectedDate = newDate;
                 });
                 print(selectedDate);
+
+                user.setdob(Timestamp.fromDate(selectedDate!));
               },
               pickerTheme: const DateTimePickerTheme(
                 backgroundColor: Colors.transparent,
@@ -56,7 +63,8 @@ class _DOBScreenState extends State<DOBScreen> {
 
             AppButton(
               text: 'NEXT',
-              onTap: () => Navigator.of(context).pushNamed(AboutYouScreen.routeName),
+              onTap: () =>
+                  Navigator.of(context).pushNamed(AboutYouScreen.routeName),
             ),
             const Spacer(),
             Container(

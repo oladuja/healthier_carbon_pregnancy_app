@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/health_condition.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/about_textfield.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
+import 'package:provider/provider.dart';
 
 class AboutYouScreen extends StatelessWidget {
-  const AboutYouScreen({super.key});
+   AboutYouScreen({super.key});
   static const String routeName = 'about-you-screen';
 
+    final TextEditingController height = TextEditingController();
+    final TextEditingController weight = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -52,14 +59,24 @@ class AboutYouScreen extends StatelessWidget {
 
                 const SizedBox(height: 75),
                 //  Date Picker
-                const AboutAppTextField(text: "Height"),
+                AboutAppTextField(
+                  text: "Height",
+                  controller: height,
+                ),
                 const SizedBox(height: 30),
-                const AboutAppTextField(text: "Weight"),
+                AboutAppTextField(
+                  text: "Weight",
+                  controller: weight,
+                ),
                 const Spacer(),
                 AppButton(
                   text: 'NEXT',
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(HealthScreen.routeName),
+                  onTap: () {
+                    user
+                      ..setWeight(weight.text)
+                      ..setHeight(height.text);
+                    Navigator.of(context).pushNamed(HealthScreen.routeName);
+                  },
                 ),
                 const Spacer(),
                 Container(

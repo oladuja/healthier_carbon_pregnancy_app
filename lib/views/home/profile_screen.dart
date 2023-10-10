@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/location.dart';
+import 'package:healthier_carbon_pregnancy_app/main.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/profile_item.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String routeName = 'profle-screen';
@@ -11,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -44,42 +50,54 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Center(
+                Center(
                   child: Text(
-                    "Judith Fisher",
-                    style: TextStyle(
+                    user.user.name,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Center(
+                Center(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      FaIcon(
+                      const FaIcon(
                         FontAwesomeIcons.solidEnvelope,
                         color: Color(0XFFA6A6A6),
                         size: 12,
                       ),
-                      SizedBox(width: 10),
-                      Text("Judyfisher@gmail.com"),
+                      const SizedBox(width: 10),
+                      Text(user.user.email),
                     ],
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Center(
+                Center(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      FaIcon(
+                      const FaIcon(
                         FontAwesomeIcons.locationPin,
                         color: Color(0XFFA6A6A6),
                         size: 12,
                       ),
-                      SizedBox(width: 10),
-                      Text("Florida, USA"),
+                      const SizedBox(width: 10),
+                      FutureBuilder(
+                        future: Place().getAddress(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Text('');
+                          }
+                          if (snapshot.hasError) {
+                            return const Text('');
+                          }
+                          return Text(snapshot.data!);
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -222,8 +240,12 @@ class ProfileScreen extends StatelessWidget {
                   text: "Private Policy & Terms of use",
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                      StartScreen.routeName, (route) => false),
+                  onTap: () {
+                    Auth.signOut();
+                    prefs.remove('isUserLoggedIn');
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        StartScreen.routeName, (route) => false);
+                  },
                   child: const Text(
                     "Logout",
                     style: TextStyle(

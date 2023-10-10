@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/chat_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/post_item.dart';
+import 'package:provider/provider.dart';
 
 class Community extends StatelessWidget {
   const Community({super.key});
@@ -10,6 +12,7 @@ class Community extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
 
     return SingleChildScrollView(
       child: SizedBox(
@@ -26,9 +29,9 @@ class Community extends StatelessWidget {
                   GestureDetector(
                     onTap: () => Navigator.of(context)
                         .pushNamed(ProfileScreen.routeName),
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 18,
-                      backgroundImage: AssetImage('assets/images/dp.png'),
+                      backgroundImage: NetworkImage(user.user.imageUrl),
                     ),
                   ),
                   const Spacer(),
@@ -145,7 +148,8 @@ class Community extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             Container(
-                   padding: const EdgeInsets.symmetric(horizontal: 25.0 , vertical: 10) ,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0XFFFEF5F3),
@@ -157,7 +161,8 @@ class Community extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             Container(
-                   padding: const EdgeInsets.symmetric(horizontal: 25.0 , vertical: 10) ,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0XFFFEF5F3),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/you_widgets.dart';
+import 'package:provider/provider.dart';
 
 class YouScreen extends StatelessWidget {
   const YouScreen({
@@ -12,6 +14,8 @@ class YouScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -20,9 +24,12 @@ class YouScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
-              child: HomeAppBar(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: HomeAppBar(
+                name: user.user.name,
+                url: user.user.imageUrl,
+              ),
             ),
             const SizedBox(height: 15),
             const Padding(
@@ -35,8 +42,6 @@ class YouScreen extends StatelessWidget {
               child: CalendarandChatWithNurse(),
             ),
             const SizedBox(height: 15),
-
-    
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               decoration: BoxDecoration(

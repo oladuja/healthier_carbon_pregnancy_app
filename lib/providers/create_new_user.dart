@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/main.dart';
 import 'package:healthier_carbon_pregnancy_app/models/user.dart';
@@ -8,11 +9,11 @@ class CreateNewUser extends ChangeNotifier {
     name: '',
     email: '',
     stage: '',
-    dob: '',
+    dob: Timestamp.now(),
     height: '',
     weight: '',
     healthCondition: '',
-    period: '',
+    period: Timestamp.now(),
   );
 
   void setName(String name) {
@@ -27,7 +28,7 @@ class CreateNewUser extends ChangeNotifier {
     user.stage = stage;
   }
 
-  void setdob(String dob) {
+  void setdob(Timestamp dob) {
     user.dob = dob;
   }
 
@@ -43,27 +44,11 @@ class CreateNewUser extends ChangeNotifier {
     user.healthCondition = healthCondition;
   }
 
-  void setPeriod(String period) {
+  void setPeriod(Timestamp period) {
     user.period = period;
   }
 
-  void setProfile(
-    String name,
-    String email,
-    String stage,
-    String dob,
-    String height,
-    String weight,
-    String healthCondition,
-    String period,
-  ) {
-    user.name = name;
-    user.email = email;
-    user.stage = stage;
-    user.dob = dob;
-    user.height = height;
-    user.weight = weight;
-    user.healthCondition = healthCondition;
-    user.period = period;
+  void setProfile(Map<String, dynamic> json) {
+    user = User.fromJson(json);
   }
 }

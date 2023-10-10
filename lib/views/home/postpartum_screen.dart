@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/you_widgets.dart';
+import 'package:provider/provider.dart';
 
 class PostpartumScreen extends StatelessWidget {
   const PostpartumScreen({
@@ -12,6 +14,8 @@ class PostpartumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CreateNewUser user = Provider.of<CreateNewUser>(context);
+
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -20,9 +24,12 @@ class PostpartumScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
-              child: HomeAppBar(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: HomeAppBar(
+                name: user.user.name,
+                url: user.user.imageUrl,
+              ),
             ),
             const SizedBox(height: 15),
             Padding(
@@ -45,9 +52,15 @@ class PostpartumScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsetsDirectional.all(8),
-                        child: const Text(
-                          '28',
-                          style: TextStyle(
+                        child: Text(
+                          (user.user.period
+                                      .toDate()
+                                      .difference(DateTime.now())
+                                      .inDays /
+                                  7)
+                              .floor()
+                              .toString(),
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ),
@@ -66,40 +79,40 @@ class PostpartumScreen extends StatelessWidget {
                           color: const Color(0XFFFEF5F3),
                         ),
                         padding: const EdgeInsets.all(10),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            FaIcon(
+                            const FaIcon(
                               FontAwesomeIcons.person,
                               color: Color(0XFF666666),
                             ),
-                            SizedBox(width: 15),
+                            const SizedBox(width: 15),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "Weight",
                                   style: TextStyle(fontSize: 10),
                                 ),
                                 Text(
-                                  "234lb",
-                                  style: TextStyle(
+                                  user.user.weight,
+                                  style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
-                            SizedBox(width: 15),
+                            const SizedBox(width: 15),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "Height",
                                   style: TextStyle(fontSize: 10),
                                 ),
                                 Text(
-                                  "5 ft 7\"",
-                                  style: TextStyle(
+                                  user.user.height,
+                                  style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold),
                                 ),

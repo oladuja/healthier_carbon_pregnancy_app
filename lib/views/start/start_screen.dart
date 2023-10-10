@@ -2,11 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
-import 'package:healthier_carbon_pregnancy_app/helper/fire_store.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/log.dart';
 import 'package:healthier_carbon_pregnancy_app/main.dart';
-import 'package:healthier_carbon_pregnancy_app/models/user.dart' as user;
-import 'package:healthier_carbon_pregnancy_app/views/home/home_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/login_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/signup_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
@@ -47,21 +44,6 @@ class StartScreen extends StatelessWidget {
                   try {
                     await Auth.signInWithGoogle();
                     logger.i(auth.currentUser!.email);
-                    await FireStore().addUserToDatabase(
-                      user.User(
-                        id: auth.currentUser!.uid,
-                        name: auth.currentUser!.displayName!,
-                        email: auth.currentUser!.email!,
-                        stage: '',
-                        dob: '',
-                        height: '5 ft 7',
-                        weight: '',
-                        healthCondition: '',
-                        period: '',
-                      ).toJson(),
-                    );
-                    final SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
                     prefs.setBool('isUserLoggedIn', true);
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
