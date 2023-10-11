@@ -52,8 +52,8 @@ class PeriodScreen extends StatelessWidget {
                 const SizedBox(height: 15),
                 CalendarDatePicker(
                   initialDate: DateTime.now(),
-                  firstDate: DateTime(2023),
-                  lastDate: DateTime(2024),
+                  firstDate: DateTime(DateTime.now().year),
+                  lastDate: DateTime.now(),
                   onDateChanged: (date) {
                     user.setPeriod(Timestamp.fromDate(date));
                   },
@@ -68,6 +68,8 @@ class PeriodScreen extends StatelessWidget {
                       await FireStore().addUserToDatabase(
                         User(
                           id: auth.currentUser!.uid,
+                          imageUrl: auth.currentUser!.photoURL ??
+                              'https://www.nicepng.com/png/full/933-9332131_profile-picture-default-png.png',
                           name: auth.currentUser!.displayName ?? user.user.name,
                           email: auth.currentUser!.email ?? user.user.email,
                           stage: user.user.stage,
@@ -78,7 +80,7 @@ class PeriodScreen extends StatelessWidget {
                           period: user.user.period,
                         ).toJson(),
                       );
-                      prefs.setBool('isUserLoggedIn', true);
+                      await prefs.setBool('isUserLoggedIn', true);
                       var data =
                           await FireStore().getUser(auth.currentUser!.uid);
                       user.setProfile(data.data()!);

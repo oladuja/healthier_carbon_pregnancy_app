@@ -144,7 +144,7 @@ class SignUpScreen extends StatelessWidget {
                         onTap: () async {
                           if (formKey.currentState!.validate()) {
                             try {
-                              Auth.account(
+                              await Auth.account(
                                   email.text, password.text, AuthMode.register);
                               Navigator.of(context)
                                   .popAndPushNamed(StageScreen.routeName);

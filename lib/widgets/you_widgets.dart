@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/log.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
-import 'package:healthier_carbon_pregnancy_app/views/home/chat_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/chat/chat_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/schedule_screen.dart';
@@ -257,7 +258,6 @@ class DisplayDashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CreateNewUser user = Provider.of<CreateNewUser>(context);
-
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 15,
@@ -346,7 +346,7 @@ class DisplayDashBoard extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          '${(user.user.period.toDate().difference(DateTime.now()).inDays / 7).floor().toString()} Weeks',
+                          '${(DateTime.now().difference(user.user.period.toDate()).inDays).floor().toString()} Weeks',
                           style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -357,20 +357,20 @@ class DisplayDashBoard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 15),
-                const Column(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Estimated time of delivery in",
                       style: TextStyle(fontSize: 10),
                     ),
-                    SizedBox(height: 7),
+                    const SizedBox(height: 7),
                     SizedBox(
                       height: 25,
                       child: Text(
-                        "22 weeks",
-                        style: TextStyle(
+                        '${((user.user.period.toDate().subtract(const Duration(days: 90)).add(const Duration(days: 372))).day / 7).floor().toString()} weeks',
+                        style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                     ),

@@ -53,13 +53,7 @@ class PostpartumScreen extends StatelessWidget {
                         ),
                         padding: const EdgeInsetsDirectional.all(8),
                         child: Text(
-                          (user.user.period
-                                      .toDate()
-                                      .difference(DateTime.now())
-                                      .inDays /
-                                  7)
-                              .floor()
-                              .toString(),
+                          '${(DateTime.now().difference(user.user.period.toDate()).inDays).floor().toString()} Weeks',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),

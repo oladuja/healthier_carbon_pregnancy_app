@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/fire_store.dart';
@@ -97,18 +98,26 @@ class LoginScreen extends StatelessWidget {
                     text: "SIGN IN",
                     onTap: () async {
                       try {
-                        Auth.account(email.text, password.text, AuthMode.login);
-                        prefs.setBool('isUserLoggedIn', true);
+                        await Auth.account(
+                            email.text, password.text, AuthMode.login);
+                        await prefs.setBool('isUserLoggedIn', true);
                         var data =
                             await FireStore().getUser(auth.currentUser!.uid);
                         user.setProfile(data.data()!);
                         Navigator.of(context)
                             .popAndPushNamed(HomeScreen.routeName);
+                      } on FirebaseAuthException catch (e) {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(e.message!),
+                          ),
+                        );
                       } catch (e) {
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('An error occured'),
+                          SnackBar(
+                            content: Text(e.toString()),
                           ),
                         );
                       }

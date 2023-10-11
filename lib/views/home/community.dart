@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
-import 'package:healthier_carbon_pregnancy_app/views/home/chat_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/chat/chat_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/profile_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/post_item.dart';
 import 'package:provider/provider.dart';

@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   var data = snapshot.data!.data();
                   user.setProfile(data!);
                   return (user.user.stage == 'pregnant')
-                      ? YouScreen(size: size)
+                      ? YouScreen(size: size,)
                       : PostpartumScreen(size: size);
                 }),
             const CheckInScreen(),
