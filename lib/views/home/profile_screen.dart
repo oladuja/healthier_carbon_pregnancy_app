@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/location.dart';
+import 'package:healthier_carbon_pregnancy_app/helper/log.dart';
 import 'package:healthier_carbon_pregnancy_app/main.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/start_screen.dart';
@@ -43,10 +44,10 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Center(
+                Center(
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundImage: AssetImage('assets/images/main_dp.png'),
+                    backgroundImage: NetworkImage(user.user.imageUrl),
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -95,6 +96,7 @@ class ProfileScreen extends StatelessWidget {
                           if (snapshot.hasError) {
                             return const Text('');
                           }
+                          logger.i(snapshot.data);
                           return Text(snapshot.data!);
                         },
                       ),
