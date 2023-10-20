@@ -69,7 +69,7 @@ class PeriodScreen extends StatelessWidget {
                         User(
                           id: auth.currentUser!.uid,
                           imageUrl: auth.currentUser!.photoURL ??
-                              'https://www.nicepng.com/png/full/933-9332131_profile-picture-default-png.png',
+                              'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg',
                           name: auth.currentUser!.displayName ?? user.user.name,
                           email: auth.currentUser!.email ?? user.user.email,
                           stage: user.user.stage,

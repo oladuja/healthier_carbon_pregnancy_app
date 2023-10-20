@@ -17,7 +17,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       healthCondition: json['healthCondition'] as String,
       period: const TimestampConverter().fromJson(json['period'] as Timestamp?),
       imageUrl: json['imageUrl'] as String? ??
-          'https://www.nicepng.com/png/full/933-9332131_profile-picture-default-png.png',
+          'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg',
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
