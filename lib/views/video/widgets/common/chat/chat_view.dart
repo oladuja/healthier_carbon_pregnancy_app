@@ -226,6 +226,7 @@ class _ChatViewState extends State<ChatView> {
 
   @override
   void dispose() {
+    msgTextController.dispose();
     widget.meeting.pubSub.unsubscribe("CHAT", messageHandler);
     super.dispose();
   }

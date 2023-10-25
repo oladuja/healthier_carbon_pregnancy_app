@@ -6,15 +6,15 @@ import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:provider/provider.dart';
 
 class AboutYouScreen extends StatelessWidget {
-   AboutYouScreen({super.key});
+  AboutYouScreen({super.key});
   static const String routeName = 'about-you-screen';
 
-    final TextEditingController height = TextEditingController();
-    final TextEditingController weight = TextEditingController();
+  final TextEditingController height = TextEditingController();
+  final TextEditingController weight = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     CreateNewUser user = Provider.of<CreateNewUser>(context);
-
 
     Size size = MediaQuery.of(context).size;
     return Scaffold(

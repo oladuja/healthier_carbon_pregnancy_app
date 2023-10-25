@@ -33,6 +33,9 @@ class _SpeakerJoinScreenState extends State<SpeakerJoinScreen> {
 
   TextEditingController meetingIdTextController = TextEditingController();
   TextEditingController nameTextController = TextEditingController();
+
+ 
+
   @override
   void initState() {
     initCameraPreview();
@@ -72,7 +75,7 @@ class _SpeakerJoinScreenState extends State<SpeakerJoinScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading:  IconButton(
+        leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           color: Colors.black,
           onPressed: () => Navigator.of(context).pop(),

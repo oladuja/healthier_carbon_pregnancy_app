@@ -64,7 +64,6 @@ class _ViewerJoinScreenState extends State<ViewerJoinScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                   
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -158,6 +157,8 @@ class _ViewerJoinScreenState extends State<ViewerJoinScreen> {
 
   @override
   void dispose() {
+    meetingIdTextController.dispose();
+    nameTextController.dispose();
     super.dispose();
   }
 }
