@@ -110,14 +110,15 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                     AppTextField(
-                        type: TextInputType.emailAddress,
-                        controller: email,
-                        validator: (value) {
-                          if (!EmailValidator.validate(email.text.trim())) {
-                            return 'Invalid Email';
-                          }
-                          return null;
-                        }),
+                      type: TextInputType.emailAddress,
+                      controller: email,
+                      validator: (value) {
+                        if (!EmailValidator.validate(email.text.trim())) {
+                          return 'Invalid Email';
+                        }
+                        return null;
+                      },
+                    ),
                     const SizedBox(height: 15),
                     const Align(
                       alignment: Alignment.centerLeft,

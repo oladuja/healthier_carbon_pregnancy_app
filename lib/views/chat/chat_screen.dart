@@ -124,13 +124,7 @@ class SendMessage extends StatefulWidget {
 }
 
 class _SendMessageState extends State<SendMessage> {
- final TextEditingController controller = TextEditingController();
-
- @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

@@ -19,12 +19,6 @@ class _AppTextFieldPasswordState extends State<AppTextFieldPassword> {
   bool isVissible = true;
 
   @override
-  void dispose() {
-    widget.controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: widget.validator,
