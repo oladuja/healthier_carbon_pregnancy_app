@@ -135,14 +135,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                   isLoggedInSelected = true;
                                 });
                                 try {
-                                  await Auth.account(email.text, password.text,
-                                      AuthMode.login);
-                                  await prefs.setBool('isUserLoggedIn', true);
-                                  var data = await FireStore()
-                                      .getUser(auth.currentUser!.uid);
-                                  user.setProfile(data.data()!);
-                                  Navigator.of(context)
-                                      .popAndPushNamed(HomeScreen.routeName);
+                                  await Auth.account(
+                                    email.text,
+                                    password.text,
+                                    AuthMode.login,
+                                  ).then((value) async {
+                                    await prefs.setBool('isUserLoggedIn', true);
+                                    var data = await FireStore()
+                                        .getUser(auth.currentUser!.uid);
+                                    user.setProfile(data.data()!);
+                                    Navigator.of(context)
+                                        .popAndPushNamed(HomeScreen.routeName);
+                                  });
                                 } on FirebaseAuthException catch (e) {
                                   setState(() {
                                     isLoggedInSelected = false;
@@ -162,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .hideCurrentSnackBar();
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(e.toString()),
+                                      content: Text('An error has occurred'),
                                     ),
                                   );
                                 }

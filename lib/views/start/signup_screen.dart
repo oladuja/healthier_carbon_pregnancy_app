@@ -7,17 +7,24 @@ import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_text_field_password.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   static const String routeName = 'signup-screen';
+  const SignUpScreen({super.key});
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
 
-  SignUpScreen({super.key});
+class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController name = TextEditingController();
+
+  bool isLoggedInSelected = false;
+
   @override
   Widget build(BuildContext context) {
     CreateNewUser user = Provider.of<CreateNewUser>(context, listen: false);
@@ -139,18 +146,30 @@ class SignUpScreen extends StatelessWidget {
                           }
                           return null;
                         }),
-                    const SizedBox(height: 45),
+                    isLoggedInSelected
+                        ? Center(
+                            child: LoadingAnimationWidget.staggeredDotsWave(
+                              color: Colors.white,
+                              size: 45,
+                            ),
+                          )
+                        : const SizedBox(height: 45),
                     AppButton(
                         text: "CONTINUE",
                         onTap: () async {
                           if (formKey.currentState!.validate()) {
+                            setState(() {
+                              isLoggedInSelected = true;
+                            });
                             try {
-                              await Auth.account(
-                                  email.text, password.text, AuthMode.register);
-                              Navigator.of(context)
-                                  .popAndPushNamed(StageScreen.routeName);
-                              user.setName(name.text.trim());
-                              user.setEmail(email.text.trim());
+                              await Auth.account(email.text, password.text,
+                                      AuthMode.register)
+                                  .then((_) async {
+                                user.setName(name.text.trim());
+                                user.setEmail(email.text.trim());
+                                Navigator.of(context)
+                                    .popAndPushNamed(StageScreen.routeName);
+                              });
                             } catch (e) {
                               ScaffoldMessenger.of(context)
                                   .hideCurrentSnackBar();
@@ -159,7 +178,13 @@ class SignUpScreen extends StatelessWidget {
                                   content: Text('An error occured'),
                                 ),
                               );
+                              setState(() {
+                                isLoggedInSelected = true;
+                              });
                             }
+                            setState(() {
+                              isLoggedInSelected = true;
+                            });
                           }
                         }),
                     const SizedBox(height: 15),
