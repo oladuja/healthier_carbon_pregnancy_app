@@ -146,47 +146,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                           return null;
                         }),
-                        const SizedBox(height: 45),
+                    const SizedBox(height: 45),
                     isLoggedInSelected
                         ? Center(
                             child: LoadingAnimationWidget.staggeredDotsWave(
                               color: Colors.white,
                               size: 45,
                             ),
-                          );
-                    AppButton(
-                        text: "CONTINUE",
-                        onTap: () async {
-                          if (formKey.currentState!.validate()) {
-                            setState(() {
-                              isLoggedInSelected = true;
-                            });
-                            try {
-                              await Auth.account(email.text, password.text,
-                                      AuthMode.register)
-                                  .then((_) async {
-                                user.setName(name.text.trim());
-                                user.setEmail(email.text.trim());
-                                Navigator.of(context)
-                                    .popAndPushNamed(StageScreen.routeName);
-                              });
-                            } catch (e) {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('An error occured'),
-                                ),
-                              );
-                              setState(() {
-                                isLoggedInSelected = true;
-                              });
-                            }
-                            setState(() {
-                              isLoggedInSelected = true;
-                            });
-                          }
-                        }),
+                          )
+                        : AppButton(
+                            text: "CONTINUE",
+                            onTap: () async {
+                              if (formKey.currentState!.validate()) {
+                                setState(() {
+                                  isLoggedInSelected = true;
+                                });
+                                try {
+                                  await Auth.account(email.text, password.text,
+                                          AuthMode.register)
+                                      .then((_) async {
+                                    user.setName(name.text.trim());
+                                    user.setEmail(email.text.trim());
+                                    Navigator.of(context)
+                                        .popAndPushNamed(StageScreen.routeName);
+                                  });
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('An error occured'),
+                                    ),
+                                  );
+                                  setState(() {
+                                    isLoggedInSelected = true;
+                                  });
+                                }
+                                setState(() {
+                                  isLoggedInSelected = true;
+                                });
+                              }
+                            }),
                     const SizedBox(height: 15),
                     const Text(
                       'By clicking continue, you agree to our Terms of\nUse and Privacy Policy',
