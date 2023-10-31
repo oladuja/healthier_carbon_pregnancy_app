@@ -26,6 +26,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isLoggedInSelected = false;
 
   @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    name.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     CreateNewUser user = Provider.of<CreateNewUser>(context, listen: false);
 
