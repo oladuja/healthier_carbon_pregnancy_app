@@ -146,14 +146,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                           return null;
                         }),
+                        const SizedBox(height: 45),
                     isLoggedInSelected
                         ? Center(
                             child: LoadingAnimationWidget.staggeredDotsWave(
                               color: Colors.white,
                               size: 45,
                             ),
-                          )
-                        : const SizedBox(height: 45),
+                          );
                     AppButton(
                         text: "CONTINUE",
                         onTap: () async {
