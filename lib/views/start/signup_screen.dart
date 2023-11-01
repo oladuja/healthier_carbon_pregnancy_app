@@ -57,165 +57,168 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // const Text(
-                        //   'Sign Up',
-                        //   style: TextStyle(fontSize: 12),
-                        // ),
-                        const Spacer(),
-                        GestureDetector(
-                          onTap: () => Navigator.of(context)
-                              .popAndPushNamed(LoginScreen.routeName),
-                          child: const Text(
-                            style: TextStyle(fontSize: 12),
-                            'Sign In',
+              child: FocusScope(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // const Text(
+                          //   'Sign Up',
+                          //   style: TextStyle(fontSize: 12),
+                          // ),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () => Navigator.of(context)
+                                .popAndPushNamed(LoginScreen.routeName),
+                            child: const Text(
+                              style: TextStyle(fontSize: 12),
+                              'Sign In',
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Create Account',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Create Account',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                      ),
+                      const Spacer(),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Name',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    const Spacer(),
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Name',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    AppTextField(
-                      type: TextInputType.name,
-                      controller: name,
-                      validator: (value) {
-                        if (value!.length < 3) {
-                          return 'Name must be more than 3 Characters';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 15),
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Email',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    AppTextField(
-                      type: TextInputType.emailAddress,
-                      controller: email,
-                      validator: (value) {
-                        if (!EmailValidator.validate(email.text.trim())) {
-                          return 'Invalid Email';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 15),
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Password',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    AppTextFieldPassword(
-                        controller: password,
+                      AppTextField(
+                        type: TextInputType.name,
+                        controller: name,
                         validator: (value) {
-                          if (value!.length < 6) {
-                            return 'Password must be more than 5 Characters';
+                          if (value!.length < 3) {
+                            return 'Name must be more than 3 Characters';
                           }
                           return null;
-                        }),
-                    const SizedBox(height: 45),
-                    isLoggedInSelected
-                        ? Center(
-                            child: LoadingAnimationWidget.staggeredDotsWave(
-                              color: Colors.white,
-                              size: 45,
-                            ),
-                          )
-                        : AppButton(
-                            text: "CONTINUE",
-                            onTap: () async {
-                              if (formKey.currentState!.validate()) {
-                                setState(() {
-                                  isLoggedInSelected = true;
-                                });
-                                try {
-                                  await Auth.account(email.text, password.text,
-                                          AuthMode.register)
-                                      .then((_) async {
-                                    user.setName(name.text.trim());
-                                    user.setEmail(email.text.trim());
-                                    Navigator.of(context)
-                                        .popAndPushNamed(StageScreen.routeName);
+                        },
+                      ),
+                      const SizedBox(height: 15),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Email',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      AppTextField(
+                        type: TextInputType.emailAddress,
+                        controller: email,
+                        validator: (value) {
+                          if (!EmailValidator.validate(email.text.trim())) {
+                            return 'Invalid Email';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 15),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Password',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      AppTextFieldPassword(
+                          controller: password,
+                          validator: (value) {
+                            if (value!.length < 6) {
+                              return 'Password must be more than 5 Characters';
+                            }
+                            return null;
+                          }),
+                      const SizedBox(height: 45),
+                      isLoggedInSelected
+                          ? Center(
+                              child: LoadingAnimationWidget.staggeredDotsWave(
+                                color: Colors.white,
+                                size: 45,
+                              ),
+                            )
+                          : AppButton(
+                              text: "CONTINUE",
+                              onTap: () async {
+                                if (formKey.currentState!.validate()) {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  setState(() {
+                                    isLoggedInSelected = true;
                                   });
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('An error occured'),
-                                    ),
-                                  );
+                                  try {
+                                    await Auth.account(email.text, password.text,
+                                            AuthMode.register)
+                                        .then((_) async {
+                                      user.setName(name.text.trim());
+                                      user.setEmail(email.text.trim());
+                                      Navigator.of(context)
+                                          .popAndPushNamed(StageScreen.routeName);
+                                    });
+                                  } catch (e) {
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('An error occured'),
+                                      ),
+                                    );
+                                    setState(() {
+                                      isLoggedInSelected = true;
+                                    });
+                                  }
                                   setState(() {
                                     isLoggedInSelected = true;
                                   });
                                 }
-                                setState(() {
-                                  isLoggedInSelected = true;
-                                });
-                              }
-                            }),
-                    const SizedBox(height: 15),
-                    const Text(
-                      'By clicking continue, you agree to our Terms of\nUse and Privacy Policy',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    Container(
-                      width: 150,
-                      height: 150,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/logo.png'),
+                              }),
+                      const SizedBox(height: 15),
+                      const Text(
+                        'By clicking continue, you agree to our Terms of\nUse and Privacy Policy',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 15),
-                  ],
+                      const SizedBox(height: 15),
+                      Container(
+                        width: 150,
+                        height: 150,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/logo.png'),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                    ],
+                  ),
                 ),
               ),
             ),
