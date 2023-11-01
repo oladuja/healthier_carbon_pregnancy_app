@@ -162,7 +162,7 @@ class CheckInScreen extends StatelessWidget {
                         color: Colors.red,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => ViewerJoinScreen(),
+                            builder: (_) => const ViewerJoinScreen(),
                           ),
                         ),
                       )

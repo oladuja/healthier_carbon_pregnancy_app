@@ -6,18 +6,21 @@ class WaitingToJoin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: const Center(
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             VerticalSpacer(20),
-            Text("Creating a Room",
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500)),
+            Text(
+              "Joining a Room",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),

@@ -110,6 +110,7 @@ class _ViewerJoinScreenState extends State<ViewerJoinScreen> {
                         );
                       },
                     ),
+                    const VerticalSpacer(8),
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
