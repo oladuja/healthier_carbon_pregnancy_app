@@ -19,11 +19,11 @@ class PeriodScreen extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: size.width,
-            height: size.height,
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          width: size.width,
+          height: size.height,
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 const SizedBox(height: 15),
@@ -60,7 +60,7 @@ class PeriodScreen extends StatelessWidget {
                   currentDate: DateTime.now(),
                 ),
                 const SizedBox(height: 15),
-
+          
                 AppButton(
                   text: "NEXT",
                   onTap: () async {
@@ -96,7 +96,7 @@ class PeriodScreen extends StatelessWidget {
                     }
                   },
                 ),
-                const Spacer(),
+                // const Spacer(),
                 Container(
                   width: 150,
                   height: 150,

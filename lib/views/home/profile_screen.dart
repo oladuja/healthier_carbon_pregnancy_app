@@ -76,10 +76,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     const Spacer(),
-                    const FaIcon(
-                      FontAwesomeIcons.gear,
-                      color: Color(0XFF666666),
-                    ),
+                    // const FaIcon(
+                    //   FontAwesomeIcons.gear,
+                    //   color: Color(0XFF666666),
+                    // ),
                   ],
                 ),
                 Center(
@@ -301,22 +301,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                const ProfileItem(
-                  icon: FontAwesomeIcons.creditCard,
-                  text: "Purchases",
-                ),
-                const ProfileItem(
-                  icon: FontAwesomeIcons.bell,
-                  text: "Reminders",
-                ),
-                const ProfileItem(
-                  icon: FontAwesomeIcons.question,
-                  text: "Purchases",
-                ),
-                const ProfileItem(
-                  icon: FontAwesomeIcons.circleInfo,
-                  text: "Private Policy & Terms of use",
-                ),
+                // const ProfileItem(
+                //   icon: FontAwesomeIcons.creditCard,
+                //   text: "Purchases",
+                // ),
+                // const ProfileItem(
+                //   icon: FontAwesomeIcons.bell,
+                //   text: "Reminders",
+                // ),
+                // const ProfileItem(
+                //   icon: FontAwesomeIcons.question,
+                //   text: "Purchases",
+                // ),
+                // const ProfileItem(
+                //   icon: FontAwesomeIcons.circleInfo,
+                //   text: "Private Policy & Terms of use",
+                // ),
                 GestureDetector(
                   onTap: () {
                     Auth.signOut();
