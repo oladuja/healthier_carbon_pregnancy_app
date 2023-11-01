@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/auth.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
@@ -172,14 +173,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     isLoggedInSelected = true;
                                   });
                                   try {
-                                    await Auth.account(email.text, password.text,
-                                            AuthMode.register)
+                                    await Auth.account(email.text,
+                                            password.text, AuthMode.register)
                                         .then((_) async {
                                       user.setName(name.text.trim());
                                       user.setEmail(email.text.trim());
-                                      Navigator.of(context)
-                                          .popAndPushNamed(StageScreen.routeName);
+                                      Navigator.of(context).popAndPushNamed(
+                                          StageScreen.routeName);
                                     });
+                                  } on FirebaseAuthException catch (e) {
+                                    setState(() {
+                                      isLoggedInSelected = false;
+                                    });
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(e.code),
+                                      ),
+                                    );
                                   } catch (e) {
                                     ScaffoldMessenger.of(context)
                                         .hideCurrentSnackBar();

@@ -47,7 +47,7 @@ class NotificationScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15),
-              const Text("You have 1 unread message"),
+              // const Text("You have 1 unread message"),
               ...List<Widget>.generate(
                 2,
                 (index) => NotifcationItem(

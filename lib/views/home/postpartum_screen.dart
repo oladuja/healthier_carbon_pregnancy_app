@@ -43,7 +43,9 @@ class PostpartumScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 18.0, vertical: 10),
+                    horizontal: 18.0,
+                    vertical: 10,
+                  ),
                   child: Row(
                     children: [
                       Container(
@@ -106,9 +108,12 @@ class PostpartumScreen extends StatelessWidget {
                                 ),
                                 Text(
                                   user.user.height,
+                                  overflow: TextOverflow.clip,
+                                  softWrap: true,
                                   style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),

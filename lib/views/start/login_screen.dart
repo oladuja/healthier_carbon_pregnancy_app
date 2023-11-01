@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .hideCurrentSnackBar();
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text(e.message!),
+                                        content: Text(e.code),
                                       ),
                                     );
                                   } catch (e) {

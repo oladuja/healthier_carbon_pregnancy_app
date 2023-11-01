@@ -9,7 +9,6 @@ import 'package:healthier_carbon_pregnancy_app/views/start/signup_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/start/stage_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/app_button.dart';
 import 'package:healthier_carbon_pregnancy_app/widgets/sign_with_button.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class StartScreen extends StatefulWidget {
   static const String routeName = 'start-screen';
