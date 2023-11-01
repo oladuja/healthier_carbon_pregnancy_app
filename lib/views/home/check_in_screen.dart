@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthier_carbon_pregnancy_app/views/home/notification_screen.dart';
 import 'package:healthier_carbon_pregnancy_app/views/video/screens/speaker_join_screen.dart';
+import 'package:healthier_carbon_pregnancy_app/views/video/screens/viewer_join_screen.dart';
 
 class CheckInScreen extends StatelessWidget {
   const CheckInScreen({super.key});
@@ -66,8 +67,8 @@ class CheckInScreen extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) =>SpeakerJoinScreen(
-                                  isCreateMeeting: false),
+                          builder: (_) =>
+                              const ViewerJoinScreen()
                         ),
                       ),
                       child: const FaIcon(
@@ -161,8 +162,7 @@ class CheckInScreen extends StatelessWidget {
                         color: Colors.red,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => SpeakerJoinScreen(
-                                  isCreateMeeting: false,)
+                            builder: (_) => ViewerJoinScreen(),
                           ),
                         ),
                       )
