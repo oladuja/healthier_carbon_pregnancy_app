@@ -10,8 +10,8 @@ class CreateNewUser extends ChangeNotifier {
     email: '',
     stage: '',
     dob: Timestamp.now(),
-    height: '',
-    weight: '',
+    height: '50 kg',
+    weight: '3 feet 3 inches',
     healthCondition: '',
     period: Timestamp.now(),
   );

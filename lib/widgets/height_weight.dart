@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:healthier_carbon_pregnancy_app/helper/log.dart';
 import 'package:healthier_carbon_pregnancy_app/providers/create_new_user.dart';
